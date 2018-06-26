@@ -64,7 +64,7 @@ class DevelopmentController extends Controller
 
         //salvando empreendimento no banco
         $empreendimento=Development::create($dados);
-        if ($dados['status']='OBRAS') {
+        if ($dados['status']=='OBRAS') {
             $obra=Building::create($dados);
 
             foreach ($request->photos_obra as $photos_obra) {

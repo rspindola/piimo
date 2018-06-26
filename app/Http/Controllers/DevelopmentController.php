@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Development;
 use Illuminate\Http\Request;
 use App\Models\Image;
+use App\Models\Building;
 use ImageI;
 use App\Http\Requests\DevelopmentCreateRequest;
 use App\Http\Requests\DevelopmentUpdateRequest;
@@ -63,7 +64,21 @@ class DevelopmentController extends Controller
 
         //salvando empreendimento no banco
         $empreendimento=Development::create($dados);
+        if ($dados['status']='OBRAS') {
+            $obra=Building::create($dados);
 
+            foreach ($request->photos_obra as $photos_obra) {
+                $filename = 'obra-'.str_random(10).time().'.'.$photos_obra->getClientOriginalExtension(); 
+                $destinationPath = public_path('images/empreendimentos');
+                $thumb_img = ImageI::make($photos_obra->getRealPath())->resize(795, 550);
+                $thumb_img->save($destinationPath.'/'.$filename,80);
+                Image::create([
+                    'development_id' => $empreendimento->id,
+                    'nome' => $filename,
+                    'category' => 'FOTO'
+                ]);
+            }
+        }
         //salvando imagens do empreendimento
         foreach ($request->photos as $photo) {
             $filename = 'empreendimento-'.str_random(10).time().'.'.$photo->getClientOriginalExtension(); 

@@ -2,6 +2,9 @@
 
 @section('title', 'Piimo Admin | Criar Empreendimento')
 @section('css')
+<link href='https://fonts.googleapis.com/css?family=Quantico' rel='stylesheet' type='text/css'/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.2.0/css/ion.rangeSlider.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.2.0/css/ion.rangeSlider.skinHTML5.min.css" />
 @stop
 @section('content_header')
 <h1>Nova Empreendimento</h1>
@@ -12,9 +15,6 @@
 	<div class="col-md-12">
 		<!-- general form elements -->
 		<div class="box box-primary">
-			<div class="box-header with-border">
-			</div>
-			<!-- /.box-header -->
 			<!-- form start -->
 			<form role="form" action="{{route('empreendimentos.store')}}" method="POST" enctype="multipart/form-data">
 			{{ csrf_field() }}
@@ -114,10 +114,10 @@
 						</div>
                         <div class="form-group has-feedback {{ $errors->has('status') ? 'has-error' : '' }} col-md-4">
 							<label for="destaque">Status</label>
-							<select name="status" class="form-control" id="exampleFormControlSelect1">
+							<select name="status" class="form-control" id="status">
+								<option value="LANÇAMENTO">Lançamento</option>
 								<option value="OBRAS">Obras</option>
 								<option value="PRONTO">Pronto</option>
-								<option value="LANÇAMENTO">Lançamento</option>
 							</select>
 							@if ($errors->has('status'))
 								<span class="help-block">
@@ -168,7 +168,51 @@
 									<strong>{{ $errors->first('photos_planta') }}</strong>
 								</span>
 							@endif
-                        </div>
+						</div>
+						<div class="col-md-12 div-obra hidden">
+							<h4>Detalhes da obra</h4>
+							<div class="form-group has-feedback {{ $errors->has('photos_obra') ? 'has-error' : '' }} col-md-12">
+								<label for="imagem">Imagens da obra</label>
+								<input type="file" class="form-control" name="photos_obra[]" accept="image/*" multiple />
+								@if ($errors->has('photos_obra'))
+									<span class="help-block">
+										<strong>{{ $errors->first('photos_obra') }}</strong>
+									</span>
+								@endif
+							</div>
+							<div class="col-md-6 col-sm-12 col-xs-12">
+								<label for="">Terreno</label>
+								<input type="text" class="range" id="terreno" name="terreno" value="" />
+							</div>
+							<div class="col-md-6 col-sm-12 col-xs-12">
+								<label for="">Fundações</label>
+								<input type="text" class="range" id="fundacao" name="fundacao" value="" />
+							</div>
+							<div class="col-md-6 col-sm-12 col-xs-12">
+								<label for="">Estrutura</label>
+								<input type="text" class="range" id="estrutura" name="estrutura" value="" />
+							</div>
+							<div class="col-md-6 col-sm-12 col-xs-12">
+								<label for="">Alvenarias</label>
+								<input type="text" class="range" id="alvenaria" name="alvenaria" value="" />
+							</div>
+							<div class="col-md-6 col-sm-12 col-xs-12">
+								<label for="">Instalações</label>
+								<input type="text" class="range" id="instalacao" name="instalacao" value="" />
+							</div>
+							<div class="col-md-6 col-sm-12 col-xs-12">
+								<label for="">Revestimento</label>
+								<input type="text" class="range" id="revestimento" name="revestimento" value="" />
+							</div>
+							<div class="col-md-6 col-sm-12 col-xs-12">
+								<label for="">Acabamento</label>
+								<input type="text" class="range" id="acabamento" name="acabamento" value="" />
+							</div>
+							<div class="col-md-6 col-sm-12 col-xs-12">
+								<label for="">Entrega</label>
+								<input type="text" class="range" id="entrega" name="entrega" value="" />
+							</div>
+						</div>
 					</div>
 				</div>
 				<!-- /.box-body -->
@@ -183,6 +227,7 @@
 </div>
 @stop
 @section('js')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.2.0/js/ion.rangeSlider.min.js"></script>
 <script src="https://maps.google.com/maps/api/js?key=AIzaSyBLezfrq9tUx1R6oumaft7H2Xz77_sLcUM"></script>
 <script src="{{ asset('/js/gmaps.js') }}"></script>
 <script src="{{ asset('/js/correios.js') }}"></script>
@@ -190,6 +235,17 @@
 <script src="{{ asset('/vendor/ckeditor/adapters/jquery.js') }}"></script>
 <script type="text/javascript">
 	$('textarea').ckeditor();
+	$('.range').ionRangeSlider({
+		min: 0,
+		max: 100,
+	});
+	$('#status').change(function(){
+		if ($('#status').val() == 'OBRAS') {
+			$('.div-obra').removeClass('hidden');
+		} else {
+			$('.div-obra').addClass('hidden')
+		}
+	});
 	$('.select2-multi').select2();
 	var loadFile = function(event) {
 		var reader = new FileReader();

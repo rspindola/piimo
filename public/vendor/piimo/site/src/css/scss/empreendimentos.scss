@@ -1,0 +1,292 @@
+
+
+/***** EMPREENDIMENTOS - Geral *****/
+#filtro {
+    margin-bottom: 2em;
+    
+    .card {
+        text-align: center;
+        border-radius: 0;
+        border: 0;
+    }
+    .card-header {
+        background: $cor-chumbo;
+        color: white;
+        padding: 0.2em 0 0;
+        border: 0;
+        
+        .icon-filtro {
+            width: 50px;
+            position: absolute;
+            left: 7em;
+            top: -0.5em;
+        }
+    }
+    .card-body {
+        border: 3px solid $cor-chumbo;
+        text-transform: uppercase;
+        color: $cor-cinza;
+        padding-bottom: 0;
+    }
+    ul {
+        padding: 0;
+    }
+    ul li {
+        display: inline-block;
+        margin: 0 .5em;
+        
+        a {
+            color: $cor-cinza;
+            
+            &.filtro-selecionado {
+                color: $cor-chumbo !important;
+                font-weight: 600;
+            }
+        }
+    }
+    .filtro-obras {
+        font-size: 1.8em;
+    }
+    hr {
+        border-color: $cor-cinza;
+        width: 60%;
+    }
+    .filtro-bairros {
+        font-size: 1.2em;
+    }
+}
+
+#card-empreendimentos {
+    .card {
+        background: url(../img/empreendimentos/card_bg.jpg);
+        color: white;
+        font-family: 'Open Sans', sans-serif;
+        text-align: center;
+        margin-bottom: 2em;
+        
+        a {
+            color: inherit;
+            text-decoration: inherit;
+        }
+    }
+    .card-header {
+        font-weight: bold;
+        font-size: 1.2em;
+        padding: 0.3em 0;
+    }
+    .card-body {
+        padding: 0;
+    }
+    .card-footer {
+        padding: .2em 0;
+        font-size: 0.9em;
+        font-weight: 100;
+        
+        strong {
+            font-weight: bold;
+        }
+    }
+}
+
+/***** EMPREENDIMENTOS - Internas *****/
+.emp-section {
+    margin-bottom: 5em;
+}
+.emp-title {
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.emp-status {
+    background-color: $cor-cinza;
+    color: white;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding: .5em 1em;
+    max-width: 140px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.wrap-status:before {
+    content: '';
+    display: block;
+    border-top: 0;
+    border-bottom: solid 41px $cor-cinza;
+    border-left: solid 22px transparent;
+    right: 100%;
+    position: absolute;
+    bottom: 0;
+    top: 0;
+}
+.emp-desc {
+    font-size: 0.85em;
+}
+.emp-share {
+    display: flex;
+    justify-content: flex-end;
+
+    margin-top: .5em;
+    
+    
+    @media #{$mobile} {
+        justify-content: start;
+        margin: 1em 0;
+    }
+    
+    img {
+        width: 31px;
+        height: 31px;
+        margin: 0 .2em;
+    }
+}
+
+#obras {
+    .emp-title {
+        
+        @media #{$mobile} {
+            text-align: left;
+        }
+        
+    }
+}
+
+.nav-tabs, .tab-content {
+    font-family: 'Open Sans', sans-serif;
+    color: $cor-cinza;
+}
+
+.nav-tabs {
+    font-weight: 500;
+    margin-bottom: 1em;
+    
+    .nav-link {
+        padding-left: 1.2em;
+        padding-right: 1.2em;
+        color: $cor-chumbo;
+        
+        @media #{$mobile} {
+            padding: 8px 0.9em;
+        }
+        
+        &.active {
+            font-weight: 600;
+        }
+    }
+}
+.tab-content {
+    padding-left: 0.3em;
+    
+    li {
+        margin-bottom: .8em;
+    }
+}
+
+.glry-obras, .glry-plantas, .glry-img {
+    a {
+        margin-top: .5em;
+    }
+    
+    img {
+        margin: .2em;
+        width: 11em;
+        height: auto;
+        
+        @media #{$mobile} {
+            width: 9.8em;
+        }
+    }
+}
+
+.glry-obras {
+    
+    img {
+        width: 8.5em;
+    }
+}
+
+.glry-plantas {
+    img {
+        border: 1px solid #ccc;
+    }
+}
+
+//6 fotos
+#payssandu {
+    
+    .glry-img {
+        
+        a {
+            width: 9em;
+        }
+    }
+}
+
+//5 fotos
+#redentor {
+    
+    .glry-img {
+        
+        a {
+            width: 12em;
+            
+            @media #{$mobile} {
+                width: inherit;
+            }
+        }
+    }
+    
+    /*.glry-obras {
+        
+        img {
+            width: initial;
+        }
+    }*/
+}
+
+//4 fotos
+#vivendi {
+    
+    .glry-img {
+        
+        a {
+            width: 14em;
+            
+            @media #{$mobile} {
+                width: inherit;
+            }
+        }
+    }
+}
+
+#esplendido {
+    
+    .glry-img {
+        
+        a {
+            width: 17em;
+            
+            @media #{$mobile} {
+                width: inherit;
+            }
+        }
+        
+        img {
+            
+            width: 100%;
+        }
+    }
+    
+    .glry-plantas {
+        
+        a {
+            width: 11em;
+        }
+        
+        img {
+            width: 100%;
+        }
+    }
+    
+    
+}

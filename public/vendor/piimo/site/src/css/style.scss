@@ -1,0 +1,39 @@
+/***** VARIÁVEIS *****/
+$cor-chumbo-claro: #b6c9d1;
+$cor-chumbo: #7694a0;
+$cor-verde: #84bf41;
+
+$cor-texto: #a3a3a3;
+
+$cor-cinza: #636463;
+
+$mobile: "(max-width: 768px)";
+
+$iphone5: "(max-width: 320px)";
+
+.section-title {
+    border-bottom: 1px solid $cor-cinza;
+    padding-bottom: 0.3em;
+    margin-bottom: 1em;
+}
+
+%secao-titulo {
+    border-bottom: 1px solid $cor-cinza;
+    padding-bottom: 0.3em;
+}
+
+@import "scss/geral.scss";
+
+/***** HEADER *****/
+@import "scss/header.scss";
+
+/***** HOME *****/
+@import "scss/home.scss";
+
+/***** INTERNAS *****/
+@import "scss/internas.scss";
+
+@import "scss/empreendimentos.scss";
+
+/***** FOOTER *****/
+@import "scss/footer.scss";

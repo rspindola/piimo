@@ -1,0 +1,180 @@
+/***** LEGACY *****/
+/*.no-flexbox .d-flex {
+    display: inline !important;
+}*/
+
+/***** GERAL *****/
+body {
+    color: $cor-texto;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+
+    overflow-x: hidden;
+}
+
+.navbar-brand {
+    width: 216px;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.form-control {
+    border: 0;
+}
+
+.btn-success {
+    background: $cor-verde;
+    border-color: $cor-verde;
+    
+    color: darken($cor-verde, 20%);
+    
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+    text-transform: uppercase;
+    
+    padding: .5rem 3rem;
+    
+    @media #{$mobile} {
+        padding: .5rem 1rem;
+    }
+    
+    &:hover, &:focus:active {
+        background: darken($cor-verde, 10%);
+        border-color: darken($cor-verde, 10%);
+        
+        color: $cor-verde;
+    }
+    
+}
+
+.badge {
+    background: $cor-chumbo;
+    border-radius: 0;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding-bottom: 0;
+    padding-top: .4em;
+    
+    &, i {
+        color: white;
+    }
+    
+    i {
+        font-size: 1.2em;
+        vertical-align: sub;
+    }
+}
+
+strong, .strong {
+    font-weight: 600;
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
+    color: $cor-cinza;
+}
+
+main {
+    margin-bottom: 8em;
+    
+    h4, .h4 {
+       font-size: 1.5rem !important; 
+        color: $cor-cinza;
+    }
+    p {
+        font-family: 'Open Sans', sans-serif;
+        color: $cor-cinza;
+        text-align: justify;
+        font-size: 0.9em;
+        line-height: 2em;
+    }
+    
+}
+/***** MODAL *****/
+.modal-backdrop {
+   background-color: #222b2e;
+    opacity: .8 !important;
+}
+.modal-dialog {
+    max-width: 530px;
+}
+.close {
+    color: #d92626;
+    text-shadow: none;
+    opacity: 1;
+    
+    &:hover {
+        color: darken(red, 20%);
+        text-shadow: none;
+    }
+}
+.modal-header {
+    border: 0;
+    padding: 0 .3em .5em 0;
+}
+
+.modal-content {
+    background: transparent;
+    border: 0;
+}
+
+.modal-body {
+    background: $cor-chumbo;
+    padding: 3em;
+    
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    
+    p {
+        font-family: 'Open Sans', sans-serif;
+        color: white;
+    }
+}
+
+/***** FORM *****/
+form {
+    label {
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 600;
+        color: $cor-chumbo-claro;
+
+        margin: 0;
+    }
+
+    input, textarea, select {
+        font-family: 'Open Sans', sans-serif;
+        margin-bottom: 1em;
+    }
+}
+select.form-control {
+    border: 1px solid #ced4da !important;
+    font-family: 'Open Sans', sans-serif;
+}
+.form-div {
+    background: $cor-chumbo;
+    color: white;
+    
+    padding: 3em;
+    border-radius: 5px;
+    
+    @media #{$mobile} {
+        padding: 1.5em;
+    }
+    
+    p {
+        color: white;
+        
+        &.form-title {
+            color: $cor-chumbo-claro;
+            font-weight: 600;
+            font-size: 1.7em;
+        }
+        
+        &.small {
+            font-size: 0.7em;
+        }
+    
+    }
+}

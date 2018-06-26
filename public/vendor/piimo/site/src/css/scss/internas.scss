@@ -1,0 +1,183 @@
+#page-title {
+    background: url(../img/page-title_bg.jpg);
+    background-size: cover;
+    
+    padding: 4em 0;
+    
+    margin-bottom: 4.5em;
+    
+    h1 {
+        font-family: 'Open Sans', sans-serif;
+        font-weight: bold;
+        color: white;
+        text-shadow: 2px 1px 0px black;
+        
+        margin: 0;
+        
+        @media #{$mobile} {
+            font-size: 2em;
+        }
+    }
+}
+
+#gmap_canvas {
+    width:100%;
+    height:452px;
+}
+
+.gm-style-iw {
+    color: black;
+}
+
+/***** A EMPRESA *****/
+#main-piimo {
+    
+     
+}
+
+#faixa-qualidades {
+    background: url(../img/piimo/faixa-qualidades_bg.jpg) $cor-chumbo;
+    background-size: cover;
+    
+    font-size: 1.3em;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    
+    margin: 3em 0;
+    
+    ul {
+        padding: 1.3em;
+        margin: 0;
+        
+        @media #{$mobile} {
+            padding: 0em 1.3em;
+        }
+        
+    }
+    ul li {
+        display: inline-block;
+        padding: 0 2em;
+        
+        @media #{$mobile} {
+            padding: 0.5em 2em;
+        }
+    }
+    ul li ~ li {
+        border-left: 1px solid white;
+        
+        @media #{$mobile} {
+            border-left: 0;
+            border-top: 1px solid white;
+        }
+    }
+    strong {
+        color: $cor-chumbo-claro;
+    }
+}
+
+#localizacao {
+    
+    margin-bottom: 8em;
+    
+    p.h2 {
+        font-family: 'Poppins', sans-serif;
+    }
+     
+}
+
+/***** OBRA POR ADMINISTRACAO *****/
+#obra-piimo {
+
+}
+
+/***** FALE CONOSCO *****/
+#contato-piimo {
+
+}
+.contato-list {
+    color: $cor-cinza;
+    list-style-type: none;
+    
+    @media #{$mobile} {
+        padding-left: 0;
+    }
+    
+    .contato-list-title {
+        margin-bottom: 2em;
+
+        .h1 {
+            display: inline-block;
+            
+            text-align: left;
+            font-family: 'Poppins', sans-serif;
+            font-size: 2em;
+            font-weight: 600;
+            
+            @media #{$mobile} {
+                font-size: 1.2em;
+            }
+        }
+        
+        li {
+            margin-left: 4em;
+        }
+    }
+    ul {
+        padding-left: 0;
+    }
+    li {
+        font-family: 'Open Sans', sans-serif;
+        list-style-type: none;
+    }
+    i {
+        color: inherit;
+    }
+}
+
+[class*="contato-icon"]:before {
+    display: inline;
+
+    font-family: "piimo";
+
+    font-size: 2em;
+    color: white;
+    background: $cor-chumbo;
+    border-radius: 50%;
+
+    padding: 10px 12px;
+    margin-right: .3em;
+    
+    vertical-align: sub;
+    
+    @media #{$mobile} {
+        vertical-align: sub;
+    }
+    
+}
+.contato-icon- {
+    &map-marker:before {
+        content: "\66";
+    }
+    &headphones:before {
+        content: "\62";
+    }
+    &map:before {
+        content: "\66";
+    }
+    &microphone:before {
+        content: "\67";
+    }
+    &share-alt:before {
+        content: "\6c";
+    }
+}
+
+/***** FALE CONOSCO *****/
+#trabalhe-piimo {
+
+    h1, .h1, h2, .h2 {
+        font-weight: 600;
+    }
+    
+}

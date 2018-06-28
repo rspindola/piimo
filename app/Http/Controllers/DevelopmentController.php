@@ -40,12 +40,6 @@ class DevelopmentController extends Controller
      */
     public function store(DevelopmentCreateRequest $request)
     {
-        //regras para inclusão
-        $this->validate($request, [
-            'name' => 'required',
-            'photos'=>'required',
-        ]);
-
         //requisição dos dados do formulario
         $dados = request()->except('_token');
         
@@ -65,7 +59,19 @@ class DevelopmentController extends Controller
         //salvando empreendimento no banco
         $empreendimento=Development::create($dados);
         if ($dados['status']=='OBRAS') {
-            $obra=Building::create($dados);
+            $obra= new Building([
+                'development_id' => $empreendimento->id,
+                'terreno' => $request->terreno,
+                'fundacao' => $request->fundacao,  
+                'estrutura' => $request->estrutura,  
+                'alvenaria' => $request->alvenaria,  
+                'instalacao' => $request->instalacao,  
+                'revestimento' => $request->revestimento,  
+                'acabamento' => $request->acabamento,  
+                'entrega' => $request->entrega
+            ]);
+
+            $obra->save();
 
             foreach ($request->photos_obra as $photos_obra) {
                 $filename = 'obra-'.str_random(10).time().'.'.$photos_obra->getClientOriginalExtension(); 

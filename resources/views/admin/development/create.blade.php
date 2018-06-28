@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.2.0/css/ion.rangeSlider.skinHTML5.min.css" />
 @stop
 @section('content_header')
-<h1>Nova Empreendimento</h1>
+<h1>Novo Empreendimento</h1>
 @stop
 
 @section('content')

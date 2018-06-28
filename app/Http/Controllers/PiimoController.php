@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Development;
 use App\Models\Image;
+use App\Models\Building;
 
 class PiimoController extends Controller
 {
@@ -38,9 +39,11 @@ class PiimoController extends Controller
         $empreendimento = Development::whereSlug($slug)->firstOrFail();
         $imagens_empreendimento = Image::where('development_id', $empreendimento['id'])->get();
         $imagens_plantas = Image::where('development_id',$empreendimento['id'])->get();
+        $obra = Building::find($empreendimento['id']);
         return view('site.show_empreendimento')
             ->with('empreendimento', $empreendimento)
             ->with('imagens_plantas', $imagens_plantas)
+            ->with('obra', $obra)
             ->with('imagens_empreendimento', $imagens_empreendimento);
 
         SEOMeta::setTitle('Publciacao - '.$publicacao->titulo);

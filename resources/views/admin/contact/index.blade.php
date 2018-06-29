@@ -37,7 +37,7 @@
             <td>{{ $contact->isClient == 0 ? 'Não' : 'Sim' }}</td>
             <td>{{ str_limit($contact->development,30,'...') }}</td>
             <td>{{ str_limit($contact->unity,30,'...') }}</td>
-            <td>{{Carbon\Carbon::parse($cotacao->created_at)->format('d/m/Y H:i') }}</td>
+            <td>{{Carbon\Carbon::parse($contact->created_at)->format('d/m/Y H:i') }}</td>
             <td class="text-center">
               <a data-id="{{ $contact->id }}" data-title="{{$contact->message}}" class="show btn btn-sm btn-info">
                   Ver

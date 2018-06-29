@@ -238,9 +238,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" integrity="sha256-0rguYS0qgS6L4qVzANq4kjxPLtvnp5nn2nB5G1lWRv4=" crossorigin="anonymous"></script>
     <script src="{{asset('vendor/piimo/site/js/frameworks.js') }}"></script>
     <script src="{{asset('vendor/piimo/site/js/libs.js') }}"></script>
+    @yield('js')
     <!-- Include this after the sweet alert js file -->
     @include('sweet::alert')
-    @yield('js')
 </body>
 
 </html>

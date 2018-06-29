@@ -63,7 +63,7 @@
                             <div class="row">
                                 <div class="col-md-6 pr-md-1"><label for="email">Área pretendida:</label> 
                                 <select class="custom-select" name="area" id="area">
-                                    <option value="Administrativo">Administrativo</option>
+                                    <option value="Adminstrativo">Administrativo</option>
                                     <option value="Financeiro">Financeiro</option>
                                 </select>
                             </div>

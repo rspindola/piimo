@@ -48,7 +48,8 @@ class EmploymentController extends Controller
                 'linkedin' => $request->linkedin,
                 'attachment' => $filename,
             ]);
-            return response()->json('Obrigado', 200);
+            alert()->success('Em breve entraremos em contato.', 'Obrigado');
+            return redirect()->route('piimo.trabalho');
     }
 
     /**

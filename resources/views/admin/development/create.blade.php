@@ -182,42 +182,42 @@
 							</div>
 							<div class="col-md-6 col-sm-12 col-xs-12">
 								<label for="">Terreno</label>
-								<input type="text" class="range" id="terreno" name="terreno" value="" />
+								<input type="text" class="range" id="terreno" name="terreno" value="{{ old('terreno') }}" />
 							</div>
 							<div class="col-md-6 col-sm-12 col-xs-12">
 								<label for="">Fundações</label>
-								<input type="text" class="range" id="fundacao" name="fundacao" value="" />
+								<input type="text" class="range" id="fundacao" name="fundacao" value="{{ old('fundacao') }}" />
 							</div>
 							<div class="col-md-6 col-sm-12 col-xs-12">
 								<label for="">Estrutura</label>
-								<input type="text" class="range" id="estrutura" name="estrutura" value="" />
+								<input type="text" class="range" id="estrutura" name="estrutura" value="{{ old('estrutura') }}" />
 							</div>
 							<div class="col-md-6 col-sm-12 col-xs-12">
 								<label for="">Alvenarias</label>
-								<input type="text" class="range" id="alvenaria" name="alvenaria" value="" />
+								<input type="text" class="range" id="alvenaria" name="alvenaria" value="{{ old('alvenaria') }}" />
 							</div>
 							<div class="col-md-6 col-sm-12 col-xs-12">
 								<label for="">Instalações</label>
-								<input type="text" class="range" id="instalacao" name="instalacao" value="" />
+								<input type="text" class="range" id="instalacao" name="instalacao" value="{{ old('instalacao') }}" />
 							</div>
 							<div class="col-md-6 col-sm-12 col-xs-12">
 								<label for="">Revestimento</label>
-								<input type="text" class="range" id="revestimento" name="revestimento" value="" />
+								<input type="text" class="range" id="revestimento" name="revestimento" value="{{ old('revestimento') }}" />
 							</div>
 							<div class="col-md-6 col-sm-12 col-xs-12">
 								<label for="">Acabamento</label>
-								<input type="text" class="range" id="acabamento" name="acabamento" value="" />
+								<input type="text" class="range" id="acabamento" name="acabamento" value="{{ old('acabamento') }}" />
 							</div>
 							<div class="col-md-6 col-sm-12 col-xs-12">
 								<label for="">Entrega</label>
-								<input type="text" class="range" id="entrega" name="entrega" value="" />
+								<input type="text" class="range" id="entrega" name="entrega" value="{{ old('entrega') }}" />
 							</div>
 						</div>
 					</div>
 				</div>
 				<!-- /.box-body -->
 				<div class="box-footer text-center">
-					<button type="button" class="btn btn-danger">Cancelar</button>
+					<a href="{{route('empreendimentos.index')}}" class="btn btn-danger">Cancelar</a>
 					<button type="submit" class="btn btn-success">Salvar</button>
 				</div>
 			</form>

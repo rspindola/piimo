@@ -129,7 +129,8 @@ class DevelopmentController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.development.edit')->with('empreendimento', Development::find($id));
+        $obra = Building::where('development_id', $id)->first();
+        return view('admin.development.edit')->with('empreendimento', Development::find($id))->with('obra',$obra);
     }
 
     /**
@@ -142,6 +143,7 @@ class DevelopmentController extends Controller
     public function update(DevelopmentUpdateRequest $request, $id)
     {
         $development = Development::findOrFail($id);
+        $obra = Building::where('development_id', $id)->first();
 
         //requisição dos dados do formulario
         $dados = request()->except('_token');
@@ -160,6 +162,7 @@ class DevelopmentController extends Controller
         }
 
         //salvando empreendimento no banco
+        $obra->update($dados);
         $development->update($dados);
         alert()->success('Empreendimento alterado com sucesso!','Sucesso.');
         return redirect()->route('empreendimentos.index');

@@ -2,6 +2,10 @@
 
 @section('title', 'Piimo Admin | Editar Empreendimento')
 @section('css')
+<link href='https://fonts.googleapis.com/css?family=Quantico' rel='stylesheet' type='text/css'/>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.2.0/css/ion.rangeSlider.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.2.0/css/ion.rangeSlider.skinHTML5.min.css" />
 @stop
 @section('content_header')
 <h1>Editar Empreendimento</h1>
@@ -114,10 +118,10 @@
 						</div>
                         <div class="form-group has-feedback {{ $errors->has('status') ? 'has-error' : '' }} col-md-4">
 							<label for="destaque">Status</label>
-							<select name="status" class="form-control" id="exampleFormControlSelect1">
-								<option value="OBRAS">Obras</option>
-								<option value="PRONTO">Pronto</option>
-								<option value="LANÇAMENTO">Lançamento</option>
+							<select id="status" name="status" class="form-control" id="exampleFormControlSelect1">
+								<option value="PRONTO" {{ $empreendimento->status == 'PRONTO' ? 'selected' : '' }}>Pronto</option>
+								<option value="OBRAS" {{ $empreendimento->status == 'OBRAS' ? 'selected' : '' }}>Obras</option>
+								<option value="LANÇAMENTO" {{ $empreendimento->status == `LANCAMENTO` ? 'selected' : '' }}>Lançamento</option>
 							</select>
 							@if ($errors->has('status'))
 								<span class="help-block">
@@ -137,7 +141,7 @@
 							@endif
 						</div>
 						<div class="col-md-12">
-							<img class="img-responsive" id="output"/>
+							<img class="img-responsive" img="" id="output"/>
 						</div>
 						<div class="form-group has-feedback {{ $errors->has('img_featured') ? 'has-error' : '' }} col-md-12">
                             <label for="imagem">Imagem da fachada</label>
@@ -147,15 +151,50 @@
 									<strong>{{ $errors->first('img_featured') }}</strong>
 								</span>
 							@endif
-                        </div>
+						</div>
 						<div class="col-md-12">
 							<img class="img-responsive" id="output"/>
+						</div>
+						<div class="div-obra hidden">
+							<h4>Detalhes da obra</h4>
+							<div class="col-md-6 col-sm-12 col-xs-12">
+								<label for="">Terreno</label>
+								<input type="text" class="range" id="terreno" name="terreno" value="{{$obra->terreno}}" />
+							</div>
+							<div class="col-md-6 col-sm-12 col-xs-12">
+								<label for="">Fundações</label>
+								<input type="text" class="range" id="fundacao" name="fundacao" value="{{$obra->fundacao}}" />
+							</div>
+							<div class="col-md-6 col-sm-12 col-xs-12">
+								<label for="">Estrutura</label>
+								<input type="text" class="range" id="estrutura" name="estrutura" value="{{$obra->estrutura}}" />
+							</div>
+							<div class="col-md-6 col-sm-12 col-xs-12">
+								<label for="">Alvenarias</label>
+								<input type="text" class="range" id="alvenaria" name="alvenaria" value="{{$obra->alvenaria}}" />
+							</div>
+							<div class="col-md-6 col-sm-12 col-xs-12">
+								<label for="">Instalações</label>
+								<input type="text" class="range" id="instalacao" name="instalacao" value="{{$obra->instalacao}}" />
+							</div>
+							<div class="col-md-6 col-sm-12 col-xs-12">
+								<label for="">Revestimento</label>
+								<input type="text" class="range" id="revestimento" name="revestimento" value="{{$obra->revestimento}}" />
+							</div>
+							<div class="col-md-6 col-sm-12 col-xs-12">
+								<label for="">Acabamento</label>
+								<input type="text" class="range" id="acabamento" name="acabamento" value="{{$obra->acabamento}}" />
+							</div>
+							<div class="col-md-6 col-sm-12 col-xs-12">
+								<label for="">Entrega</label>
+								<input type="text" class="range" id="entrega" name="entrega" value="{{$obra->entrega}}" />
+							</div>
 						</div>
 					</div>
 				</div>
 				<!-- /.box-body -->
 				<div class="box-footer text-center">
-					<button type="button" class="btn btn-danger">Cancelar</button>
+					<a href="{{route('empreendimentos.index')}}" class="btn btn-danger">Cancelar</a>
 					<button type="submit" class="btn btn-success">Salvar</button>
 				</div>
 			</form>
@@ -165,6 +204,7 @@
 </div>
 @stop
 @section('js')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.2.0/js/ion.rangeSlider.min.js"></script>
 <script src="https://maps.google.com/maps/api/js?key=AIzaSyBLezfrq9tUx1R6oumaft7H2Xz77_sLcUM"></script>
 <script src="{{ asset('/js/gmaps.js') }}"></script>
 <script src="{{ asset('/js/correios.js') }}"></script>
@@ -176,11 +216,25 @@
 	var loadFile = function(event) {
 		var reader = new FileReader();
 		reader.onload = function(){
-		var output = document.getElementById('output');
-		output.src = reader.result;
+			var output = document.getElementById('output');
+			output.src = reader.result;
 		};
 		reader.readAsDataURL(event.target.files[0]);
 	};
+
+	$('.range').ionRangeSlider({
+		min: 0,
+		max: 100,
+	});
+	$('#status').change(function(){
+		if ($('#status').val() == 'OBRAS') {
+			$('.div-obra').removeClass('hidden');
+		} else {
+			$('.div-obra').addClass('hidden')
+		}
+	});
+
+	$('#status').change();
 
 	function pegarCoord(){
 		GMaps.geocode({

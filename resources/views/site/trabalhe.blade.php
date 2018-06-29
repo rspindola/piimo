@@ -72,7 +72,8 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <label for="curriculo" class="btn btn-success">Anexo:</label> <input class="form-control {{ $errors->has('attachment') ? 'has-error' : '' }}" id="attachment" type="file" name="attachment">
+                                <label for="curriculo" class="btn btn-success">Anexo:</label> 
+                                <input class="form-control {{ $errors->has('attachment') ? 'has-error' : '' }}" id="attachment" type="file" <input type="file" name="foo" accept="application/msword,text/plain, application/pdf" name="attachment">
                                 @if ($errors->has('attachment'))
                                     <span class="help-block-danger">
                                         <strong>{{ $errors->first('attachment') }}</strong>

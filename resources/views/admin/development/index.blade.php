@@ -35,13 +35,13 @@
             <td>{{ str_limit($development->neighborhood,30,'...') }}</td>
             <td>{{ $development->status }}</td>
             <td class="text-center">
-                <a href="{{route('empreendimentos.edit',[$development->id])}}" class="btn btn-sm btn-info">
+                <a href="{{route('empreendimentos.edit',[$development->id])}}" class="btn btn-sm btn-info" title="Editar">
                   <i class="fa fa-edit"></i>
                 </a>
-                <a href="{{route('images.edit',[$development->id])}}" class="btn btn-sm btn-warning">
+                <a href="{{route('images.edit',[$development->id])}}" class="btn btn-sm btn-warning" title="Galeria de fotos" >
                   <i class="fa fa-file"></i>
                 </a>
-                <a data-id="{{ $development->id }}" data-title="{{$development->name}}" class="delete-post btn btn-sm btn-danger">
+                <a data-id="{{ $development->id }}" data-title="{{$development->name}}" class="delete-post btn btn-sm btn-danger" title="Excluir">
                   <i class="fa fa-trash"></i>
                 </a>
             </td>

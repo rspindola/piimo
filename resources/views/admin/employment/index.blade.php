@@ -34,7 +34,7 @@
             <td>{{ str_limit($curriculo->phone,30,'...') }}</td>
             <td>{{ str_limit($curriculo->cel,30,'...') }}</td>
             <td>{{ str_limit($curriculo->linkedin,30,'...') }}</td>
-            <td>{{ $curriculo->created_at }}</td>
+            <td>{{Carbon\Carbon::parse($cotacao->created_at)->format('d/m/Y H:i') }}</td>
             <td class="text-center">
               <a href="{{ url('storage/'.$curriculo->attachment)}}" target="_blank" class="btn btn-sm btn-info">
                   Ver

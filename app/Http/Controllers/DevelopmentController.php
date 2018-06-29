@@ -56,23 +56,23 @@ class DevelopmentController extends Controller
             $dados['img_featured'] = $filename;
         }
 
-        //salvando empreendimento no banco
+        
         $empreendimento=Development::create($dados);
+        //salvando obra no banco
+        $obra= new Building([
+            'development_id' => $empreendimento->id,
+            'terreno' => $request->terreno,
+            'fundacao' => $request->fundacao,  
+            'estrutura' => $request->estrutura,  
+            'alvenaria' => $request->alvenaria,  
+            'instalacao' => $request->instalacao,  
+            'revestimento' => $request->revestimento,  
+            'acabamento' => $request->acabamento,  
+            'entrega' => $request->entrega
+        ]);
+
+        $obra->save();
         if ($dados['status']=='OBRAS') {
-            $obra= new Building([
-                'development_id' => $empreendimento->id,
-                'terreno' => $request->terreno,
-                'fundacao' => $request->fundacao,  
-                'estrutura' => $request->estrutura,  
-                'alvenaria' => $request->alvenaria,  
-                'instalacao' => $request->instalacao,  
-                'revestimento' => $request->revestimento,  
-                'acabamento' => $request->acabamento,  
-                'entrega' => $request->entrega
-            ]);
-
-            $obra->save();
-
             foreach ($request->photos_obra as $photos_obra) {
                 $filename = 'obra-'.str_random(10).time().'.'.$photos_obra->getClientOriginalExtension(); 
                 $destinationPath = public_path('images/empreendimentos');
@@ -81,7 +81,7 @@ class DevelopmentController extends Controller
                 Image::create([
                     'development_id' => $empreendimento->id,
                     'nome' => $filename,
-                    'category' => 'FOTO'
+                    'category' => 'OBRA'
                 ]);
             }
         }

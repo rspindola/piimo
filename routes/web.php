@@ -17,7 +17,7 @@ Route::get('/', function () {
 Route::get('/home', function () {
     return route('home');
 });
-
+Route::post('/dropzone/{id}', 'ImageController@store');
 Auth::routes();
 Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/', 'HomeController@index')->name('home');

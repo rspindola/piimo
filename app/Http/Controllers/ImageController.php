@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Image;
 use Illuminate\Http\Request;
+use ImageI;
 
 class ImageController extends Controller
 {
@@ -33,9 +34,20 @@ class ImageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$id)
     {
-        //
+        $photo = $request->file('file');
+        $filename = 'empreendimento-'.str_random(10).time().'.'.$photo->getClientOriginalExtension(); 
+        $destinationPath = public_path('images/empreendimentos');
+        $thumb_img = ImageI::make($photo->getRealPath())->resize(795, 550);
+        $thumb_img->save($destinationPath.'/'.$filename,80);
+        Image::create([
+            'development_id' => $id,
+            'nome' => $filename,
+            'category' => $request->category
+        ]);
+    
+        return response()->json(['success'=>$filename]);
     }
 
     /**
@@ -57,7 +69,14 @@ class ImageController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.images.edit')->with('images', Image::where('development_id', $id)->get());
+        $imagens_emprendimento = Image::where('development_id', $id)->where('category', 'FOTO')->get();
+        $imagens_obra = Image::where('development_id', $id)->where('category', 'OBRA')->get();
+        $imagens_planta = Image::where('development_id', $id)->where('category', 'PLANTA')->get();
+        return view('admin.images.edit')
+            ->with('id', $id)
+            ->with('imagens_obra', $imagens_obra)
+            ->with('imagens_planta', $imagens_planta)
+            ->with('imagens_emprendimento', $imagens_emprendimento);
     }
 
     /**

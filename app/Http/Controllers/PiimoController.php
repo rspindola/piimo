@@ -37,14 +37,16 @@ class PiimoController extends Controller
     public function empreendimentosShow($slug)
     {
         $empreendimento = Development::whereSlug($slug)->firstOrFail();
-        $imagens_empreendimento = Image::where('development_id', $empreendimento['id'])->get();
-        $imagens_plantas = Image::where('development_id',$empreendimento['id'])->get();
+        $imagens_emprendimento = Image::where('development_id', $empreendimento['id'])->where('category', 'FOTO')->get();
+        $imagens_obra = Image::where('development_id', $empreendimento['id'])->where('category', 'OBRA')->get();
+        $imagens_planta = Image::where('development_id', $empreendimento['id'])->where('category', 'PLANTA')->get();
         $obra = Building::find($empreendimento['id']);
         return view('site.show_empreendimento')
             ->with('empreendimento', $empreendimento)
-            ->with('imagens_plantas', $imagens_plantas)
             ->with('obra', $obra)
-            ->with('imagens_empreendimento', $imagens_empreendimento);
+            ->with('imagens_obra', $imagens_obra)
+            ->with('imagens_planta', $imagens_planta)
+            ->with('imagens_emprendimento', $imagens_emprendimento);
 
         SEOMeta::setTitle('Publciacao - '.$publicacao->titulo);
         SEOMeta::setDescription('Conteudo sobre o destaque '.$publicacao->destaque);

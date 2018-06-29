@@ -145,7 +145,7 @@
                         </div>
                         <div class="col-6 col-md-7 p-md-0">
                            <div class="progress">
-                              <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
+                              <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: {{$obra->instalacao}}%" aria-valuenow="{{$obra->instalacao}}" aria-valuemin="0" aria-valuemax="100">{{$obra->instalacao}}%</div>
                            </div>
                         </div>
                         <div class="col-2 col-md-1">
@@ -158,7 +158,7 @@
                         </div>
                         <div class="col-6 col-md-7 p-md-0">
                            <div class="progress">
-                              <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">10%</div>
+                              <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: {{$obra->revestimento}}%" aria-valuenow="{{$obra->revestimento}}" aria-valuemin="0" aria-valuemax="100">{{$obra->revestimento}}%</div>
                            </div>
                         </div>
                         <div class="col-2 col-md-1">
@@ -171,7 +171,7 @@
                         </div>
                         <div class="col-6 col-md-7 p-md-0">
                            <div class="progress">
-                              <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                              <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: {{$obra->acabamento}}%" aria-valuenow="{{$obra->acabamento}}" aria-valuemin="0" aria-valuemax="100">{{$obra->acabamento}}%</div>
                            </div>
                         </div>
                         <div class="col-2 col-md-1">
@@ -184,7 +184,7 @@
                         </div>
                         <div class="col-6 col-md-7 p-md-0">
                            <div class="progress">
-                              <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                              <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: {{$obra->entrega}}%" aria-valuenow="{{$obra->entrega}}" aria-valuemin="0" aria-valuemax="100">{{$obra->entrega}}%</div>
                            </div>
                         </div>
                         <div class="col-2 col-md-1">
@@ -200,7 +200,13 @@
                </select>
                <div class="wrap-obras">
                   <div class="glry-obras mar-18">
-                     <div class="d-flex flex-wrap justify-content-center"><a href="img/empreendimentos/harmonie/harmonie-residencial-obra-01.jpg"><img src="img/empreendimentos/harmonie/harmonie-residencial-obra-01.jpg" alt=""></a><a href="img/empreendimentos/harmonie/harmonie-residencial-obra-02.jpg"><img src="img/empreendimentos/harmonie/harmonie-residencial-obra-02.jpg" alt=""></a><a href="img/empreendimentos/harmonie/harmonie-residencial-obra-03.jpg"><img src="img/empreendimentos/harmonie/harmonie-residencial-obra-03.jpg" alt=""></a><a href="img/empreendimentos/harmonie/harmonie-residencial-obra-04.jpg"><img src="img/empreendimentos/harmonie/harmonie-residencial-obra-04_thumb.jpg" alt=""></a><a href="img/empreendimentos/harmonie/harmonie-residencial-obra-05.jpg"><img src="img/empreendimentos/harmonie/harmonie-residencial-obra-05.jpg" alt=""></a><a href="img/empreendimentos/harmonie/harmonie-residencial-obra-06.jpg"><img src="img/empreendimentos/harmonie/harmonie-residencial-obra-06.jpg" alt=""></a><a href="img/empreendimentos/harmonie/harmonie-residencial-obra-07.jpg"><img src="img/empreendimentos/harmonie/harmonie-residencial-obra-07.jpg" alt=""></a></div>
+                     <div class="d-flex flex-wrap justify-content-center">
+                        @foreach($imagens_obra as $img)
+                            <a href="{{ url('images/empreendimentos/'.$img->nome)}}">
+                                <img src="{{ url('images/empreendimentos/'.$img->nome)}}" alt="">
+                            </a>
+                        @endforeach
+                     </div>
                   </div>
                </div>
             </div>
@@ -218,12 +224,10 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="glry-plantas d-flex flex-wrap justify-content-center">
-                        @foreach($imagens_empreendimento as $img)
-                            @if(starts_with($img->nome, 'empreendimento-'))
+                        @foreach($imagens_emprendimento as $img)
                             <a href="{{ url('images/empreendimentos/'.$img->nome)}}">
                                 <img src="{{ url('images/empreendimentos/'.$img->nome)}}" alt="">
                             </a>
-                            @endif
                         @endforeach
                     </div>
                 </div>
@@ -240,12 +244,10 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="glry-plantas d-flex flex-wrap justify-content-center">
-                        @foreach($imagens_plantas as $planta)
-                            @if(starts_with($planta->nome, 'planta-'))
+                        @foreach($imagens_planta as $planta)
                             <a href="{{ url('images/empreendimentos/'.$planta->nome)}}">
                                 <img src="{{ url('images/empreendimentos/'.$planta->nome)}}" alt="">
                             </a>
-                            @endif
                         @endforeach
                     </div>
                 </div>

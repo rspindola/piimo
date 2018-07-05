@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Piimo Admin | Curriculos')
+@section('title', 'Piimo Admin | Newsletter')
 
 @section('content_header')
-<h1>Curriculos</h1>
+<h1>newsletter</h1>
 @stop
 @section('css')
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.css">
@@ -18,31 +18,22 @@
           <tr>
             <th>Nome</th>
             <th>Email</th>
-            <th>Telefone</th>
-            <th>Celular</th>
-            <th>Linkedin</th>
+            <th>Origem</th>
+            <th>Peça</th>
             <th>Data do contato</th>
-            <th>Anexo</th>
           </tr>
         </thead>
         <tbody>
-        @if(count($curriculos) > 0)
-          @foreach($curriculos as $curriculo)
+        @if(count($newsletter) > 0)
+          @foreach($newsletter as $new)
           <tr>
-            <td>{{ str_limit($curriculo->name,30,'...') }}</td>
-            <td>{{ str_limit($curriculo->email,30,'...') }}</td>
-            <td>{{ str_limit($curriculo->phone,30,'...') }}</td>
-            <td>{{ str_limit($curriculo->cel,30,'...') }}</td>
-            <td>{{ str_limit($curriculo->linkedin,30,'...') }}</td>
-            <td>{{Carbon\Carbon::parse($curriculo->created_at)->format('d/m/Y H:i') }}</td>
-            <td class="text-center">
-              <a href="{{ url('storage/'.$curriculo->attachment)}}" target="_blank" class="btn btn-sm btn-info">
-                  Ver
-                </a>
-            </td>
+            <td>{{ str_limit($new->name,30,'...') }}</td>
+            <td>{{ str_limit($new->email,30,'...') }}</td>
+            <td>{{ str_limit($new->utm_source,30,'...') }}</td>
+            <td>{{ str_limit($new->utm_medium,30,'...') }}</td>
+            <td>{{Carbon\Carbon::parse($new->created_at)->format('d/m/Y H:i') }}</td>
           </tr>
           @endforeach
-          @include('admin.employment.show')
         @endif
         </tbody>
       </table>
@@ -53,6 +44,10 @@
 @section('js')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
 <script>
+$('.show').on('click', function() {
+	$('#message').html($(this).data('title'));
+	$('#show-new').modal('show');
+});
 $(document).ready(function() {
     $('#example1').DataTable( {
       "language": {

@@ -26,6 +26,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::resource('/images', 'ImageController');
     Route::resource('/contatos', 'ContactController');
     Route::resource('/curriculos', 'EmploymentController'); 
+    Route::resource('/newsletter', 'NewsletterController'); 
 });
 Route::get('/empreendimento', 'PiimoController@empreendimentos')->name('empreendimento.site.index');
 Route::get('/empreendimento/{slug}/show', 'PiimoController@empreendimentosShow')->name('empreendimento.site.show');
@@ -38,3 +39,4 @@ Route::get('/trabalho', 'PiimoController@trabalho')->name('piimo.trabalho');
 Route::post('/trabalhe/envia', 'EmploymentController@store')->name('piimo.trabalho.store');
 Route::get('/contato', 'PiimoController@contato')->name('piimo.contato');
 Route::post('/contato/envia', 'ContactController@store')->name('piimo.contato.store');
+Route::post('/newsletter/envia', 'NewsletterController@store')->name('piimo.news.store');

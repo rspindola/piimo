@@ -134,6 +134,13 @@ return [
             'url'  => 'admin/curriculos',
             'icon' => 'file-text-o',
         ],
+        [
+            'text' => 'Newsletter',
+            'url'  => 'admin/newsletter',
+            'icon' => 'file-text-o',
+        ],
+
+        
     ],
 
     /*

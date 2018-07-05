@@ -1,5 +1,16 @@
 @extends('vendor.piimo.msster')
 @section('css')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.24.1/sweetalert2.min.css" />
+<style>
+    .help-block-danger{
+        color:red;
+        font-size: 0.75rem;
+    }
+    .has-error{
+        border: 1px solid red !important;
+    }
+</style>
+@stop
 @section('content')
 <header>
     <div class="container-fluid m-0 p-0">
@@ -19,10 +30,16 @@
                 <p class="newsletter-title text-center"><strong class="text-uppercase">Inscreva-se</strong> e receba informações dos próximos lançamentos.</p>
             </div>
             <div class="col-md-7 p-md-0 d-flex">
-                <form class="form-inline w-100">
-                    <div class="col-6 col-md-4 pr-0 p-md-0"><input type="text" name="nome" class="form-control newsletter-form-text" placeholder="Digite seu nome"></div>
-                    <div class="col-6 col-md-4 pl-1 px-md-3"><input type="email" name="email" class="form-control newsletter-form-email" placeholder="Digite seu e-mail"></div>
-                    <div class="col-md-4 p-md-0"><button type="submit" class="btn btn-success btn-block rounded-0 text-uppercase">Quero receber</button></div>
+                <form id="news-form" class="form-inline w-100" method="post" action="">
+                    <div class="col-6 col-md-4 pr-0 p-md-0">
+                        <input type="text" id="name-news" name="name-news" class="form-control newsletter-form-text" placeholder="Digite seu nome">
+                    </div>
+                    <div class="col-6 col-md-4 pl-1 px-md-3">
+                        <input type="email" id="email-news" name="email-news" class="form-control newsletter-form-email" placeholder="Digite seu e-mail">
+                    </div>
+                    <div class="col-md-4 p-md-0">
+                        <button type="submit" class="btn btn-success btn-block rounded-0 text-uppercase">Quero receber</button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -72,4 +89,13 @@
 
 @stop
 @section('js')
+<script src="{{asset('js/geolocator.min.js')}}"></script>
+<script src="{{asset('js/getGeo.js')}}"></script>
+<script src="{{asset('js/js.cookie.min.js') }}"></script>
+<script src="{{asset('js/jquery.mask.min.js')}}"></script>
+<script src="{{asset('js/jquery.validate.js')}}"></script>
+<script src="{{asset('js/js.cookie.min.js')}}"></script>
+<script src="{{asset('js/envia.js')}}"></script>
+<script src="{{asset('vendor/sweetalert2/dist/sweetalert2.all.min.js')}}"></script>
+<script src="{{asset('vendor/sweetalert2/dist/sweetalert2.min.js')}}"></script>
 @stop

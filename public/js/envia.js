@@ -350,6 +350,90 @@ $(document).ready(function () {
         }
     })
 
+    /* Validação do formulário */
+    $('#news-form').validate({
+        // Exibir erros
+        showErrors: function (errorMap, errorList) {
+            // Limpando tooltips para elementos válidos
+            $.each(this.validElements(), function (index, element) {
+                var $element = $(element);
+                $element.data("title", "") // Desmarque a título - não há nenhum erro mais associado
+                    .removeClass("error")
+                    .tooltip("dispose");
+            });
+
+            // Criando novo tooltips para elementos inválidos
+            $.each(errorList, function (index, error) {
+                var $element = $(error.element);
+                $element.tooltip("dispose") // Destruindo qualquer pré-existente tooltip assim que nós podemos repovoar com novos tooltips
+                    .data("title", error.message)
+                    .addClass("error")
+                    .tooltip(); // Criar uma novo tooltip com base na messsage erro que acabamos de definir no título
+            });
+        },
+        submitHandler: function (form) {
+            $('.btn-success').addClass("hidden");
+            $('.loader').removeClass("hidden");
+            // obter os dados do formulário
+            var formData = {
+                'name': $('input[name=name-news]').val(),
+                'email': $('input[name=email-news]').val(),
+                'utm_source': utm_source,
+                'utm_medium': utm_medium,
+                'utm_campaign': utm_campaign,
+            };
+            $.ajax({})
+                .done(function (json) {
+                    if (json.erro !== null) {
+                        $.ajax({
+                                type: 'POST',
+                                url: '/newsletter/envia',
+                                headers: {
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                                data: formData,
+                                dataType: 'json',
+                                encode: true
+                            })
+                            .done(function (data) {
+                                console.log(formData);
+                                if ((data.errors)) {
+                                    setTimeout(function () {
+                                        swal({
+                                            type: 'error',
+                                            title: 'Atenção',
+                                            text: 'Favor, preencher os campos corretamente.',
+                                        })
+                                        $('.btn-success').removeClass("hidden");
+                                        $('.loader').addClass("hidden");
+                                    }, 500);
+                                } else {
+                                    $("#news-form")[0].reset();
+                                    swal({
+                                        type: 'success',
+                                        title: 'Obrigado',
+                                        text: 'Em breve entraremos em contato.',
+                                    })
+                                    $('.btn-success').removeClass("hidden");
+                                    $('.loader').addClass("hidden");
+                                    if (data.response) {
+                                        //
+                                    } else {
+                                        $('.form-1').html('<div class="alert alert-warning">Houve um problema, tente novamente mais tarde.</div>');
+                                    }
+                                }
+                            });
+                    } else {
+                        swal({
+                            type: 'info',
+                            title: 'CAGOU TUDO',
+                            text: 'Em breve entraremos em contato.',
+                        })
+                    }
+                });
+        }
+    })
+
 });
 
 

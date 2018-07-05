@@ -59,5 +59,27 @@ $('.show').on('click', function() {
 	$('#message').html($(this).data('title'));
 	$('#show-lead').modal('show');
 });
+$(document).ready(function() {
+    $('#example1').DataTable( {
+      "language": {
+                "url": "https://cdn.datatables.net/plug-ins/1.10.12/i18n/Portuguese-Brasil.json"
+        },
+        dom: 'Bfrtip',
+        buttons: [
+            'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ]
+    } );
+} );
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.flash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
 @stop

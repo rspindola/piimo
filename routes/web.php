@@ -40,3 +40,5 @@ Route::post('/trabalhe/envia', 'EmploymentController@store')->name('piimo.trabal
 Route::get('/contato', 'PiimoController@contato')->name('piimo.contato');
 Route::post('/contato/envia', 'ContactController@store')->name('piimo.contato.store');
 Route::post('/newsletter/envia', 'NewsletterController@store')->name('piimo.news.store');
+
+route::get('/testedatabase', 'ImageController@teste');

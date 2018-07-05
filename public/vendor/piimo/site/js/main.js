@@ -29,6 +29,7 @@ function filtraObras() {
     };
     // bind filter on select change
     $('.filtro-obras').on( 'change', function() {
+        alert("COIS")
       // get filter value from option value
       var filterValue = this.value;
       // use filterFn if matches value

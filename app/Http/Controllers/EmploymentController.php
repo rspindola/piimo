@@ -11,6 +11,10 @@ use App\Http\Requests\EmploymentFormRequest;
 
 class EmploymentController extends Controller
 {
+    public function _contruct(){
+        setlocale(LC_ALL, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+    }
+
     /**
      * Display a listing of the resource.
      *

@@ -1,5 +1,61 @@
 @extends('vendor.piimo.msster')
 @section('css')
+<style>
+
+.gallery-title
+{
+    font-size: 36px;
+    color: #42B32F;
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 70px;
+}
+.gallery-title:after {
+    content: "";
+    position: absolute;
+    width: 7.5%;
+    left: 46.5%;
+    height: 45px;
+    border-bottom: 1px solid #5e5e5e;
+}
+.filter-button
+{
+    font-size: 18px;
+    border: 1px solid #42B32F;
+    border-radius: 5px;
+    text-align: center;
+    color: #42B32F;
+    margin-bottom: 30px;
+
+}
+.filter-button:hover
+{
+    font-size: 18px;
+    border: 1px solid #42B32F;
+    border-radius: 5px;
+    text-align: center;
+    color: #ffffff;
+    background-color: #42B32F;
+
+}
+.btn-default:active .filter-button:active
+{
+    background-color: #42B32F;
+    color: white;
+}
+
+.port-image
+{
+    width: 100%;
+}
+
+.gallery_product
+{
+    margin-bottom: 30px;
+}
+
+</style>
+@stop
 @section('content')
 <section id="page-title">
     <div class="container">
@@ -195,16 +251,30 @@
                </div>
             </div>
             <div class="col-md-5">
-               <select class="form-control filtro-obras">
-                  <option value=".mar-18">Março de 2018</option>
+               <select class="form-control filtrar">
+                    <option value="all">Todas</option>
+                    <option value="2018-01">Janeiro de 2018</option>
+                    <option value="2018-02">Fevereiro de 2018</option>
+                    <option value="2018-03">Março de 2018</option>
+                    <option value="2018-04">Abril de 2018</option>
+                    <option value="2018-05">Maio de 2018</option>
+                    <option value="2018-06">Junho de 2018</option>
+                    <option value="2018-07">Julho de 2018</option>
+                    <option value="2018-08">Agosto de 2018</option>
+                    <option value="2018-09">Setembro de 2018</option>
+                    <option value="2018-10">Outubro de 2018</option>
+                    <option value="2018-11">Novembro de 2018</option>
+                    <option value="2018-12">Dezembro de 2018</option>
                </select>
                <div class="wrap-obras">
                   <div class="glry-obras mar-18">
-                     <div class="d-flex flex-wrap justify-content-center">
+                     <div class="d-flex flex-wrap filtro-emp justify-content-center">
                         @foreach($imagens_obra as $img)
+                        <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter {{Carbon\Carbon::parse($img->date)->format('Y-m') }}">
                             <a href="{{ url('images/empreendimentos/'.$img->nome)}}">
                                 <img src="{{ url('images/empreendimentos/'.$img->nome)}}" alt="">
                             </a>
+</div>
                         @endforeach
                      </div>
                   </div>
@@ -295,4 +365,30 @@
 </main>
 @stop
 @section('js')
+<script>
+    $(document).ready(function(){
+
+        $(".filtrar").change(function(){
+            var value = $('.filtrar').val();
+            if(value == "all")
+            {
+                //$('.filter').removeClass('hidden');
+                $('.filter').show('1000');
+            }
+            else
+            {
+        //            $('.filter[filter-item="'+value+'"]').removeClass('hidden');
+        //            $(".filter").not('.filter[filter-item="'+value+'"]').addClass('hidden');
+                $(".filter").not('.'+value).hide('3000');
+                $('.filter').filter('.'+value).show('3000');
+                
+            }
+        });
+        if ($(".filter-button").removeClass("active")) {
+$(this).removeClass("active");
+}
+$(this).addClass("active");
+
+});
+</script>
 @stop

@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Image;
 use Illuminate\Http\Request;
 use ImageI;
+use DB;
+use Carbon\Carbon;   
+
 
 class ImageController extends Controller
 {
@@ -109,5 +112,12 @@ class ImageController extends Controller
         $image = Image::findOrFail($id);
         $image->delete();
         return response()->json($image);
+    }
+
+    public function teste()
+    {
+        $data = DB::table('images')->whereRaw('extract(month from date) = ?', ['7'])->get();
+        $created_at->format('l j F Y'); // Monday 4 July 2016
+        return $data;
     }
 }

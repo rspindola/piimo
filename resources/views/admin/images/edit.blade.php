@@ -120,7 +120,7 @@ $('.delete').on('click', function() {
 
 function reload()
 {
-    location.h
+    location.reload();
 }
 </script>
 @stop

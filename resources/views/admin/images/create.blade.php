@@ -8,7 +8,7 @@
 				<div class="col-md-12">
 					<form action="/dropzone" method="post" class="dropzone dropzone-file-area dz-clickable" id="my-dropzone">
 					<input type="hidden" name="category" id="texto">
-
+					<input type="month" class="pull-right" name="date" id="datepicker" style="top: 10px;position: fixed;right: 10px;">
 						<div class="dz-message needsclick">
 							<span class="text">
 								Arraste fotos ou clique aqui para enviar.

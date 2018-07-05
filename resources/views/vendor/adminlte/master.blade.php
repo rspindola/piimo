@@ -21,6 +21,8 @@
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.css">
     @endif
 
+    <link rel="stylesheet" href="{{ asset('vendor/datepicker/css/datepicker.css')}}">
+
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/dist/css/AdminLTE.min.css') }}">
 
@@ -60,6 +62,7 @@
     <!-- ChartJS -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.min.js"></script>
 @endif
+<script src="{{asset('vendor/datepicker/js/bootstrap-datepicker.js')}}"></script>
 <script src="{{asset('vendor/sweetalert2/dist/sweetalert2.all.min.js')}}"></script>
 <script src="{{asset('vendor/sweetalert2/dist/sweetalert2.min.js')}}"></script>
 <!-- Include this after the sweet alert js file -->

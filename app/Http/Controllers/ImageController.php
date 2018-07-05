@@ -41,10 +41,17 @@ class ImageController extends Controller
         $destinationPath = public_path('images/empreendimentos');
         $thumb_img = ImageI::make($photo->getRealPath())->resize(795, 550);
         $thumb_img->save($destinationPath.'/'.$filename,80);
+        if ($request->date)
+        {
+            $date = $request->date.'-01';
+        }else{
+            $date = null;
+        }
         Image::create([
             'development_id' => $id,
             'nome' => $filename,
-            'category' => $request->category
+            'category' => $request->category,
+            'date' => $date
         ]);
     
         return response()->json(['success'=>$filename]);

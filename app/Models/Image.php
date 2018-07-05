@@ -7,7 +7,7 @@ use App\Models\Development;
 
 class Image extends Model
 {
-    protected $fillable = ['development_id', 'nome','category'];
+    protected $fillable = ['development_id', 'nome','category','date'];
 
     public function user()
     {

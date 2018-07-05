@@ -25,7 +25,7 @@
             <th>Empreendimento</th>
             <th>Unidade</th>
             <th>Data do contato</th>
-            <th>#</th>
+            <th>Ação</th>
           </tr>
         </thead>
         <tbody>

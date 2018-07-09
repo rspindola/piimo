@@ -23,6 +23,8 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::resource('/empreendimentos', 'DevelopmentController');
     Route::resource('/leads', 'LeadController');
+    Route::get('/leads-obras', 'LeadController@leadobra');
+    Route::get('/leads-vendas', 'LeadController@leadvenda');
     Route::resource('/images', 'ImageController');
     Route::resource('/contatos', 'ContactController');
     Route::resource('/curriculos', 'EmploymentController'); 

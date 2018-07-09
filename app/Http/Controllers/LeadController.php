@@ -41,6 +41,21 @@ class LeadController extends Controller
         return view('admin.leads.index')->with('leads', Lead::all());
     }
 
+    public function leadobra()
+    {
+        return view('admin.leads.index')
+            ->with('titulo', 'Obra')
+            ->with('leads', Lead::where('area','Obra')->get());
+    }
+
+    public function leadvenda()
+    {
+        
+        return view('admin.leads.index')
+            ->with('titulo', 'Venda seu terreno')
+            ->with('leads', Lead::where('area','Venda seu terreno')->get());
+    }
+
     /**
      * Display the specified resource.
      *

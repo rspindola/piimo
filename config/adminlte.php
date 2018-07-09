@@ -116,8 +116,17 @@ return [
         ],
         [
             'text' => 'Leads',
-            'url'  => 'admin/leads',
             'icon' => 'file',
+            'submenu' => [
+                [
+                    'text' => 'Obras',
+                    'url'  => 'admin/leads-obras',
+                ],
+                [
+                    'text' => 'Venda seu terreno',
+                    'url'  => 'admin/leads-vendas',
+                ],
+            ],
         ],
         [
             'text' => 'Empreendimentos',

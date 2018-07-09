@@ -3,11 +3,12 @@
 @section('title', 'Piimo Admin | Leads')
 
 @section('content_header')
-<h1>Leads</h1>
+<h1>Leads - {{$titulo}}</h1>
 @stop
 @section('css')
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/select/1.2.7/css/select.dataTables.min.css">
 @stop
 @section('content')
 <div class="box">
@@ -17,7 +18,6 @@
       <table id="example1" class="table table-bordered table-striped">
         <thead>
           <tr>
-            <th>#</th>
             <th>Nome</th>
             <th>Email</th>
             <th>Origem</th>
@@ -31,7 +31,6 @@
         @if(count($leads) > 0)
           @foreach($leads as $lead)
           <tr>
-            <td>{{ str_limit($lead->area,30,'...') }}</td>
             <td>{{ str_limit($lead->name,30,'...') }}</td>
             <td>{{ str_limit($lead->email,30,'...') }}</td>
             <td>{{ str_limit($lead->utm_source,30,'...') }}</td>
@@ -82,11 +81,18 @@ $(document).ready(function() {
             {
                 extend: 'pdfHtml5',
                 exportOptions: {
-                    columns: [ 0, 1, 2, 5 ]
+                    columns: ':visible'
                 }
             },
+            {
+                extend: 'print',
+                text: 'Imprimir'
+            },
             'colvis'
-        ]
+        ],
+        select: {
+            style: 'multi'
+        }
     } );
 } );
 </script>
@@ -99,4 +105,6 @@ $(document).ready(function() {
 <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>
+<script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
+
 @stop

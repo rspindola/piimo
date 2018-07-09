@@ -52,7 +52,8 @@
                     <div class="form-div">
                         <p class="h1 form-title text-uppercase text-center">Fale Conosco</p>
                         <p class="small text-center">Estamos aqui para atendê-lo.</p>
-                        <form id="contato" class="form-vertical" method="post" action="">
+                        <form id="contato" class="contato form-vertical" method="post" action="">
+                            <input type="hidden" name="area" value="FC">
                             <div class="row">
                                 <div class="col-md-12"><label for="nome">Nome:</label> <input type="text" name="name-contato" class="form-control" placeholder="Digite seu nome"></div>
                             </div>

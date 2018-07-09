@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddMonthToBuilding extends Migration
+class AddAreaToContact extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddMonthToBuilding extends Migration
      */
     public function up()
     {
-        Schema::table('images', function (Blueprint $table) {
-            $table->date('date')->nullable();
+        Schema::table('contacts', function (Blueprint $table) {
+            $table->string('area');
         });
     }
 
@@ -25,8 +25,8 @@ class AddMonthToBuilding extends Migration
      */
     public function down()
     {
-        Schema::table('images', function (Blueprint $table) {
-            $table->date('date')->nullable();
+        Schema::table('contacts', function (Blueprint $table) {
+            $table->string('area');
         });
     }
 }

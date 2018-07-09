@@ -25,6 +25,9 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::resource('/leads', 'LeadController');
     Route::get('/leads-obras', 'LeadController@leadobra');
     Route::get('/leads-vendas', 'LeadController@leadvenda');
+    Route::get('/leads-email', 'LeadController@leademail');
+    Route::get('/leads-telefone', 'LeadController@leadligamos');
+    Route::get('/leads-whatsapp', 'LeadController@leadwhatsapp');
     Route::resource('/images', 'ImageController');
     Route::resource('/contatos', 'ContactController');
     Route::resource('/curriculos', 'EmploymentController'); 
@@ -42,5 +45,7 @@ Route::post('/trabalhe/envia', 'EmploymentController@store')->name('piimo.trabal
 Route::get('/contato', 'PiimoController@contato')->name('piimo.contato');
 Route::post('/contato/envia', 'ContactController@store')->name('piimo.contato.store');
 Route::post('/newsletter/envia', 'NewsletterController@store')->name('piimo.news.store');
-
+Route::post('/email/lead', 'LeadController@email')->name('lead.email');
+Route::post('/whatsapp/lead', 'LeadController@whatsapp')->name('lead.whatsapp');
+Route::post('/ligamos/lead', 'LeadController@ligamos')->name('lead.ligamos');
 route::get('/testedatabase', 'ImageController@teste');

@@ -79,6 +79,7 @@ $(document).ready(function () {
     $('input[name="phone-contato"]').mask(SPMaskBehavior, spOptions); 
     $('input[name="cel"]').mask(SPMaskBehavior, spOptions);
     $('input[name="phone"]').mask(SPMaskBehavior, spOptions);
+    $('.phonemask').mask(SPMaskBehavior, spOptions);
     /* Validação do formulário */
     $('.form-venda').validate({
         // Exibir erros
@@ -161,6 +162,267 @@ $(document).ready(function () {
                         swal({
                             type: 'info',
                             title: 'CAGOU TUDO',
+                            text: 'Em breve entraremos em contato.',
+                        })
+                    }
+                });
+
+
+        }
+    }); /* fechamento $(form)validate */
+    /* Validação do formulário */
+    $('.ligamos').validate({
+        // Exibir erros
+        showErrors: function (errorMap, errorList) {
+            // Limpando tooltips para elementos válidos
+            $.each(this.validElements(), function (index, element) {
+                var $element = $(element);
+                $element.data("title", "") // Desmarque a título - não há nenhum erro mais associado
+                    .removeClass("error")
+                    .tooltip("dispose");
+            });
+
+            // Criando novo tooltips para elementos inválidos
+            $.each(errorList, function (index, error) {
+                var $element = $(error.element);
+                $element.tooltip("dispose") // Destruindo qualquer pré-existente tooltip assim que nós podemos repovoar com novos tooltips
+                    .data("title", error.message)
+                    .addClass("error")
+                    .tooltip(); // Criar uma novo tooltip com base na messsage erro que acabamos de definir no título
+            });
+        },
+        submitHandler: function (form) {
+            $('.btn-success').addClass("hidden");
+            $('.loader').removeClass("hidden");
+            // obter os dados do formulário
+            var formData = {
+
+                'name': $('input[name=nome-liga]').val(),
+                'phone': $('input[name=telefone-liga]').val(),
+                'utm_source': utm_source,
+                'utm_medium': utm_medium,
+                'utm_campaign': utm_campaign,
+            };
+            $.ajax({})
+                .done(function (json) {
+                    if (json.erro !== null) {
+                        $.ajax({
+                                type: 'POST',
+                                url: '/ligamos/lead',
+                                headers: {
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                                data: formData,
+                                dataType: 'json',
+                                encode: true
+                            })
+                            .done(function (data) {
+                                console.log(formData);
+                                if ((data.errors)) {
+                                    setTimeout(function () {
+                                        swal({
+                                            type: 'error',
+                                            title: 'Atenção',
+                                            text: 'Favor, preencher os campos corretamente.',
+                                        })
+                                        $('.btn-success').removeClass("hidden");
+                                        $('.loader').addClass("hidden");
+                                    }, 500);
+                                } else {
+                                    $(".ligamos")[0].reset();
+                                    swal({
+                                        type: 'success',
+                                        title: 'Obrigado',
+                                        text: 'Em breve entraremos em contato.',
+                                    })
+                                    $('.btn-success').removeClass("hidden");
+                                    $('.loader').addClass("hidden");
+                                    if (data.response) {
+                                        //
+                                    } else {
+                                        $('.form-1').html('<div class="alert alert-warning">Houve um problema, tente novamente mais tarde.</div>');
+                                    }
+                                }
+                            });
+                    } else {
+                        swal({
+                            type: 'info',
+                            title: 'CAGOU TUDO',
+                            text: 'Em breve entraremos em contato.',
+                        })
+                    }
+                });
+
+
+        }
+    }); /* fechamento $(form)validate */
+    /* Validação do formulário */
+    $('.whatsapp').validate({
+        // Exibir erros
+        showErrors: function (errorMap, errorList) {
+            // Limpando tooltips para elementos válidos
+            $.each(this.validElements(), function (index, element) {
+                var $element = $(element);
+                $element.data("title", "") // Desmarque a título - não há nenhum erro mais associado
+                    .removeClass("error")
+                    .tooltip("dispose");
+            });
+
+            // Criando novo tooltips para elementos inválidos
+            $.each(errorList, function (index, error) {
+                var $element = $(error.element);
+                $element.tooltip("dispose") // Destruindo qualquer pré-existente tooltip assim que nós podemos repovoar com novos tooltips
+                    .data("title", error.message)
+                    .addClass("error")
+                    .tooltip(); // Criar uma novo tooltip com base na messsage erro que acabamos de definir no título
+            });
+        },
+        submitHandler: function (form) {
+            alert('foi')
+            $('.btn-success').addClass("hidden");
+            $('.loader').removeClass("hidden");
+            // obter os dados do formulário
+            var formData = {
+
+                'name': $('input[name=nome-wpp]').val(),
+                'phone': $('input[name=telefone-wpp]').val(),
+                'utm_source': utm_source,
+                'utm_medium': utm_medium,
+                'utm_campaign': utm_campaign,
+            };
+            $.ajax({})
+                .done(function (json) {
+                    if (json.erro !== null) {
+                        $.ajax({
+                                type: 'POST',
+                                url: '/whatsapp/lead',
+                                headers: {
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                                data: formData,
+                                dataType: 'json',
+                                encode: true
+                            })
+                            .done(function (data) {
+                                console.log(formData);
+                                if ((data.errors)) {
+                                    setTimeout(function () {
+                                        swal({
+                                            type: 'error',
+                                            title: 'Atenção',
+                                            text: 'Favor, preencher os campos corretamente.',
+                                        })
+                                        $('.btn-success').removeClass("hidden");
+                                        $('.loader').addClass("hidden");
+                                    }, 500);
+                                } else {
+                                    $(".whatsapp")[0].reset();
+                                    swal({
+                                        type: 'success',
+                                        title: 'Obrigado',
+                                        text: 'Em breve entraremos em contato.',
+                                    })
+                                    $('.btn-success').removeClass("hidden");
+                                    $('.loader').addClass("hidden");
+                                    if (data.response) {
+                                        //
+                                    } else {
+                                        $('.form-1').html('<div class="alert alert-warning">Houve um problema, tente novamente mais tarde.</div>');
+                                    }
+                                }
+                            });
+                    } else {
+                        swal({
+                            type: 'info',
+                            title: 'CAGOU TUDO',
+                            text: 'Em breve entraremos em contato.',
+                        })
+                    }
+                });
+
+
+        }
+    }); /* fechamento $(form)validate */
+    /* Validação do formulário */
+    $('.email').validate({
+        // Exibir erros
+        showErrors: function (errorMap, errorList) {
+            // Limpando tooltips para elementos válidos
+            $.each(this.validElements(), function (index, element) {
+                var $element = $(element);
+                $element.data("title", "") // Desmarque a título - não há nenhum erro mais associado
+                    .removeClass("error")
+                    .tooltip("dispose");
+            });
+
+            // Criando novo tooltips para elementos inválidos
+            $.each(errorList, function (index, error) {
+                var $element = $(error.element);
+                $element.tooltip("dispose") // Destruindo qualquer pré-existente tooltip assim que nós podemos repovoar com novos tooltips
+                    .data("title", error.message)
+                    .addClass("error")
+                    .tooltip(); // Criar uma novo tooltip com base na messsage erro que acabamos de definir no título
+            });
+        },
+        submitHandler: function (form) {
+            $('.btn-success').addClass("hidden");
+            $('.loader').removeClass("hidden");
+            // obter os dados do formulário
+            var formData = {
+
+                'name': $('input[name=nome]').val(),
+                'phone': $('input[name=telefone]').val(),
+                'email': $('input[name=email]').val(),
+                'message': $('textarea[name=mensagem]').val(),
+                'utm_source': utm_source,
+                'utm_medium': utm_medium,
+                'utm_campaign': utm_campaign,
+            };
+            $.ajax({})
+                .done(function (json) {
+                    if (json.erro !== null) {
+                        $.ajax({
+                                type: 'POST',
+                                url: '/email/lead',
+                                headers: {
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                                data: formData,
+                                dataType: 'json',
+                                encode: true
+                            })
+                            .done(function (data) {
+                                console.log(formData);
+                                if ((data.errors)) {
+                                    setTimeout(function () {
+                                        swal({
+                                            type: 'error',
+                                            title: 'Atenção',
+                                            text: 'Favor, preencher os campos corretamente.',
+                                        })
+                                        $('.btn-success').removeClass("hidden");
+                                        $('.loader').addClass("hidden");
+                                    }, 500);
+                                } else {
+                                    $(".email")[0].reset();
+                                    swal({
+                                        type: 'success',
+                                        title: 'Obrigado',
+                                        text: 'Em breve entraremos em contato.',
+                                    })
+                                    $('.btn-success').removeClass("hidden");
+                                    $('.loader').addClass("hidden");
+                                    if (data.response) {
+                                        //
+                                    } else {
+                                        $('.form-1').html('<div class="alert alert-warning">Houve um problema, tente novamente mais tarde.</div>');
+                                    }
+                                }
+                            });
+                    } else {
+                        swal({
+                            type: 'warning',
+                            title: 'PROBLEMAS',
                             text: 'Em breve entraremos em contato.',
                         })
                     }
@@ -286,6 +548,7 @@ $(document).ready(function () {
             $('.loader').removeClass("hidden");
             // obter os dados do formulário
             var formData = {
+                'area': $('input[name=area]').val(),
                 'name': $('input[name=name-contato]').val(),
                 'phone': $('input[name=phone-contato]').val(),
                 'email': $('input[name=email-contato]').val(),

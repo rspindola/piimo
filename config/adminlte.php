@@ -126,6 +126,18 @@ return [
                     'text' => 'Venda seu terreno',
                     'url'  => 'admin/leads-vendas',
                 ],
+                [
+                    'text' => 'Contato e-mail',
+                    'url'  => 'admin/leads-email',
+                ],
+                [
+                    'text' => 'Contato Whatsapp',
+                    'url'  => 'admin/leads-whatsapp',
+                ],
+                [
+                    'text' => 'Contato Telefone',
+                    'url'  => 'admin/leads-telefone',
+                ],
             ],
         ],
         [

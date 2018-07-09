@@ -55,6 +55,7 @@ class ContactController extends Controller
         return Response::json(array('errors' => $validator->getMessageBag()->toArray()));
         } else {
             Contact::create([
+                'area' => $request->area,
                 'name' => $request->name,
                 'email' => $request->email,
                 'phone' => $request->phone,

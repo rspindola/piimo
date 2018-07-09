@@ -31,6 +31,24 @@ class LeadController extends Controller
         'utm_campaign' => 'required',
     ];
 
+    protected $rules_liga_wpp = [
+        'name' => 'required',
+        'phone' => 'required|min:14|max:15',
+        'utm_source' => 'required',
+        'utm_medium' => 'required',
+        'utm_campaign' => 'required',
+    ];
+
+    protected $rules_email = [
+        'name' => 'required',
+        'phone' => 'required|min:14|max:15',
+        'email' => 'required|email',
+        'message' => 'required',
+        'utm_source' => 'required',
+        'utm_medium' => 'required',
+        'utm_campaign' => 'required',
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -54,6 +72,32 @@ class LeadController extends Controller
         return view('admin.leads.index')
             ->with('titulo', 'Venda seu terreno')
             ->with('leads', Lead::where('area','Venda seu terreno')->get());
+    }
+
+    public function leademail()
+    {
+        
+        return view('admin.leads.index')
+            ->with('titulo', 'Contato E-mail')
+            ->with('leads', Lead::where('area','Contato E-mail')->get());
+    }
+
+
+    public function leadwhatsapp()
+    {
+        
+        return view('admin.leads.index')
+            ->with('titulo', 'Contato Whatsapp')
+            ->with('leads', Lead::where('area','Contato Whatsapp')->get());
+    }
+
+
+    public function leadligamos()
+    {
+        
+        return view('admin.leads.index')
+            ->with('titulo', 'Contato Ligação')
+            ->with('leads', Lead::where('area','Contato Ligação')->get());
     }
 
     /**
@@ -114,6 +158,72 @@ class LeadController extends Controller
             $lead->message = $request->message;
             $lead->city = $request->city;
             $lead->neighborhood = $request->neighborhood;
+            $lead->utm_source = $request->utm_source;
+            $lead->utm_medium = $request->utm_medium;
+            $lead->utm_campaign = $request->utm_campaign;
+            $lead->save();
+            return response()->json($lead);
+        }
+    }
+
+    public function whatsapp(Request $request)
+    {
+        $validator = Validator::make(Input::all(), $this->rules_liga_wpp);
+            if ($validator->fails()) {
+            return Response::json(array('errors' => $validator->getMessageBag()->toArray()));
+        } else {
+            $lead = new Lead();
+            $lead->area = 'Contato Whatsapp';
+            $lead->name = $request->name;
+            $lead->email = 'Desconhecido';
+            $lead->phone = $request->phone;
+            $lead->message = 'Desejo contato via whatsapp';
+            $lead->city = 'Desconhecido';
+            $lead->neighborhood = 'Desconhecido';
+            $lead->utm_source = $request->utm_source;
+            $lead->utm_medium = $request->utm_medium;
+            $lead->utm_campaign = $request->utm_campaign;
+            $lead->save();
+            return response()->json($lead);
+        }
+    }
+
+    public function ligamos(Request $request)
+    {
+        $validator = Validator::make(Input::all(), $this->rules_liga_wpp);
+            if ($validator->fails()) {
+            return Response::json(array('errors' => $validator->getMessageBag()->toArray()));
+        } else {
+            $lead = new Lead();
+            $lead->area = 'Contato Ligação';
+            $lead->name = $request->name;
+            $lead->email = 'Desconhecido';
+            $lead->phone = $request->phone;
+            $lead->message = 'Desejo contato via ligação';
+            $lead->city = 'Desconhecido';
+            $lead->neighborhood = 'Desconhecido';
+            $lead->utm_source = $request->utm_source;
+            $lead->utm_medium = $request->utm_medium;
+            $lead->utm_campaign = $request->utm_campaign;
+            $lead->save();
+            return response()->json($lead);
+        }
+    }
+
+    public function email(Request $request)
+    {
+        $validator = Validator::make(Input::all(), $this->rules_email);
+            if ($validator->fails()) {
+            return Response::json(array('errors' => $validator->getMessageBag()->toArray()));
+        } else {
+            $lead = new Lead();
+            $lead->area = 'Contato E-mail';
+            $lead->name = $request->name;
+            $lead->email = $request->email;
+            $lead->phone = $request->phone;
+            $lead->message = $request->message;
+            $lead->city = 'Desconhecido';
+            $lead->neighborhood = 'Desconhecido';
             $lead->utm_source = $request->utm_source;
             $lead->utm_medium = $request->utm_medium;
             $lead->utm_campaign = $request->utm_campaign;

@@ -142,7 +142,7 @@
             <div class="modal-content">
                 <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
                 <div class="modal-body">
-                    <form id="form-contato" class="form-vertical" method="post" action="">
+                    <form id="form-contato" class="email form-vertical" method="post" action="">
                         <div class="row">
                             <div class="col-md-12"><label for="nome">Nome:</label> <input type="text" name="nome" class="form-control" placeholder="Digite seu nome"></div>
                         </div>
@@ -150,7 +150,7 @@
                             <div class="col-md-12"><label for="email">Email:</label> <input type="text" name="email" class="form-control" placeholder="Digite seu e-mail"></div>
                         </div>
                         <div class="row">
-                            <div class="col-md-12"><label for="telefone">Telefone:</label> <input type="text" name="telefone" class="form-control" placeholder="Digite seu telefone"></div>
+                            <div class="col-md-12"><label for="telefone">Telefone:</label> <input type="text" name="telefone" class="phonemask form-control" placeholder="Digite seu telefone"></div>
                         </div>
                         <div class="row">
                             <div class="col-md-12"><label for="nome">Mensagem:</label> <textarea type="text" name="mensagem" class="form-control" rows="4" placeholder="Escreva sua mensagem"></textarea></div>
@@ -164,12 +164,12 @@
             <div class="modal-content">
                 <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
                 <div class="modal-body">
-                    <form id="form-contato" class="form-vertical" method="post" action="">
+                    <form id="form-contato" class="ligamos form-vertical" method="post" action="">
                         <div class="row">
-                            <div class="col-md-12"><label for="nome">Nome:</label> <input type="text" name="nome" class="form-control" placeholder="Digite seu nome"></div>
+                            <div class="col-md-12"><label for="nome">Nome:</label> <input type="text" name="nome-liga" class="form-control" placeholder="Digite seu nome"></div>
                         </div>
                         <div class="row">
-                            <div class="col-md-12"><label for="telefone">Telefone:</label> <input type="text" name="telefone" class="form-control" placeholder="Digite seu telefone"></div>
+                            <div class="col-md-12"><label for="telefone">Telefone:</label> <input type="phone" name="telefone-liga" class="phonemask form-control" placeholder="Digite seu telefone"></div>
                         </div><br><button type="submit" class="btn btn-success btn-block text-uppercase"><i class="icon-paper-plane-o"></i> Enviar</button></form>
                 </div>
             </div>
@@ -180,12 +180,12 @@
             <div class="modal-content">
                 <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
                 <div class="modal-body">
-                    <form id="form-contato" class="form-vertical" method="post" action="">
+                    <form id="modalNav_Whatsapp" class="whatsapp form-vertical" method="post" action="">
                         <div class="row">
-                            <div class="col-md-12"><label for="nome">Nome:</label> <input type="text" name="nome" class="form-control" placeholder="Digite seu nome"></div>
+                        <div class="col-md-12"><label for="nome">Nome:</label> <input type="text" name="nome-wpp" class="form-control" placeholder="Digite seu nome"></div>
                         </div>
                         <div class="row">
-                            <div class="col-md-12"><label for="telefone">Whatsapp:</label> <input type="text" name="telefone" class="form-control" placeholder="Digite seu telefone"></div>
+                            <div class="col-md-12"><label for="telefone">Whatsapp:</label> <input type="phone" name="telefone-wpp" class="phonemask form-control" placeholder="Digite seu telefone"></div>
                         </div><br><button type="submit" class="btn btn-success btn-block text-uppercase"><i class="icon-paper-plane-o"></i> Enviar</button></form>
                 </div>
             </div>

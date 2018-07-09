@@ -238,6 +238,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" integrity="sha256-0rguYS0qgS6L4qVzANq4kjxPLtvnp5nn2nB5G1lWRv4=" crossorigin="anonymous"></script>
     <script src="{{asset('vendor/piimo/site/js/frameworks.js') }}"></script>
     <script src="{{asset('vendor/piimo/site/js/libs.js') }}"></script>
+    <script src="{{asset('js/geolocator.min.js')}}"></script>
+    <script src="{{asset('js/getGeo.js')}}"></script>
+    <script src="{{asset('js/js.cookie.min.js') }}"></script>
+    <script src="{{asset('js/jquery.mask.min.js')}}"></script>
+    <script src="{{asset('js/jquery.validate.js')}}"></script>
+    <script src="{{asset('js/js.cookie.min.js')}}"></script>
+    <script src="{{asset('js/envia.js')}}"></script>
+    <script src="{{asset('vendor/sweetalert2/dist/sweetalert2.all.min.js')}}"></script>
+    <script src="{{asset('vendor/sweetalert2/dist/sweetalert2.min.js')}}"></script>
     @yield('js')
     <!-- Include this after the sweet alert js file -->
     @include('sweet::alert')

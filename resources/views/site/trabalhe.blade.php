@@ -101,13 +101,5 @@
 </main>
 @stop
 @section('js')
-<script src="{{asset('js/geolocator.min.js')}}"></script>
-<script src="{{asset('js/getGeo.js')}}"></script>
-<script src="{{asset('js/js.cookie.min.js') }}"></script>
-<script src="{{asset('js/jquery.mask.min.js')}}"></script>
-<script src="{{asset('js/jquery.validate.js')}}"></script>
-<script src="{{asset('js/js.cookie.min.js')}}"></script>
-<script src="{{asset('js/envia.js')}}"></script>
-<script src="{{asset('vendor/sweetalert2/dist/sweetalert2.all.min.js')}}"></script>
-<script src="{{asset('vendor/sweetalert2/dist/sweetalert2.min.js')}}"></script>
+
 @stop

@@ -31,7 +31,7 @@
         @if(count($imagens_emprendimento) > 0)
             @foreach($imagens_emprendimento as $ie)
             <div class="col-md-1 foto">
-                <img src="{{url('images/empreendimentos/'.$ie->nome)  }}" alt="" srcset="" class="img-responsive">
+                <img src="{{url('images/empreendimentos/thumb/'.$ie->nome)  }}" alt="" srcset="" class="img-responsive">
                 <button data-id="{{ $ie->id }}" class="btn btn-danger btn-block delete-post">Excluir</button>
             </div>
             @endforeach
@@ -41,14 +41,13 @@
 	</div>
 	<div class="row">
         <div class="col-md-12">
-		@if(count($imagens_planta) > 0)
         <h2>Imagens da planta <button class="dropzone-btn btn btn-info pull-right" data-category="PLANTA" data-id="{{$id}}">
             Incluir novo
         </button></h2>
-        
+		@if(count($imagens_planta) > 0)        
             @foreach($imagens_planta as $ip)
             <div class="col-md-1 foto">
-                <img src="{{url('images/empreendimentos/'.$ip->nome)  }}" alt="" srcset="" class="img-responsive">
+                <img src="{{url('images/empreendimentos/thumb/'.$ip->nome)  }}" alt="" srcset="" class="img-responsive">
                 <button data-id="{{ $ip->id }}" class="btn btn-danger btn-block delete-post">Excluir</button>
             </div>
             @endforeach
@@ -58,13 +57,13 @@
 	</div>
 	<div class="row">
         <div class="col-md-12">
-		@if(count($imagens_obra) > 0)
         <h2>Imagens da obra <button class="dropzone-btn btn btn-info pull-right" data-category="OBRA" data-id="{{$id}}">
             Incluir novo
         </button></h2>
+		@if(count($imagens_obra) > 0)
             @foreach($imagens_obra as $io)
             <div class="col-md-1 foto">
-                <img src="{{url('images/empreendimentos/'.$io->nome)  }}" alt="" srcset="" class="img-responsive">
+                <img src="{{url('images/empreendimentos/thumb/'.$io->nome)  }}" alt="" srcset="" class="img-responsive">
                 <button data-id="{{ $io->id }}" class="btn btn-danger btn-block delete-post">Excluir</button>
             </div>
             @endforeach

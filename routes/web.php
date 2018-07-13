@@ -33,9 +33,11 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::resource('/curriculos', 'EmploymentController'); 
     Route::resource('/newsletter', 'NewsletterController'); 
 });
-Route::get('/empreendimento', 'PiimoController@empreendimentos')->name('empreendimento.site.index');
+Route::get('/obrigado', function () {
+    return view('site.obrigado');
+});Route::get('/empreendimento', 'PiimoController@empreendimentos')->name('empreendimento.site.index');
 Route::get('/empreendimento/{slug}/show', 'PiimoController@empreendimentosShow')->name('empreendimento.site.show');
-Route::get('/obra', 'PiimoController@obra')->name('piimo.obra');
+Route::get('/obra-por-administracao', 'PiimoController@obra')->name('piimo.obra');
 Route::post('/obra/lead', 'LeadController@obra')->name('lead.obra');
 Route::get('/sobre', 'PiimoController@instituicional')->name('piimo.instituicional');
 Route::get('/venda-seu-terreno', 'PiimoController@venda')->name('piimo.venda');

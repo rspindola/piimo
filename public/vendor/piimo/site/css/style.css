@@ -596,6 +596,12 @@ nav .dropdown-menu .dropdown-item:active {
     #page-title h1 {
         font-size: 1.8em
     }
+    #filtro .filtro-obras {
+        font-size: 1em;
+    }
+    #filtro .filtro-bairros {
+        font-size: 1em;
+    }
 }
 
 #gmap_canvas {

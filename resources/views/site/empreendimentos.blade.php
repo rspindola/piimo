@@ -18,14 +18,14 @@
                     <div class="card-header">Selecione o status da obra ou bairro: <img src="{{asset('vendor/piimo/site/img/empreendimentos/icon-filter.svg') }}" class="icon-filtro d-none d-md-block" alt=""></div>
                     <div class="card-body">
                         <ul class="filtro-obras menu-filtro" data-filter-group="status">
-                            <li><a href="javascript:void(0)" class="filtro-selecionado" data-filter="*">Todos</a></li>
+                            <li><a href="javascript:void(0)" class="todos filtro-selecionado" data-filter="*">Todos</a></li>
                             <li><a href="javascript:void(0)" data-filter=".LANÇAMENTO">Lançamentos</a></li>
                             <li><a href="javascript:void(0)" data-filter=".OBRAS">Em Obras</a></li>
                             <li><a href="javascript:void(0)" data-filter=".PRONTO">Prontos</a></li>
                         </ul>
                         <hr>
                         <ul class="filtro-bairros menu-filtro" data-filter-group="bairro">
-                            <li><a href="javascript:void(0)" class="filtro-selecionado" data-filter="*">Todos</a></li>
+                            <li><a href="javascript:void(0)" class="todos filtro-selecionado" data-filter="*">Todos</a></li>
                             <li><a href="javascript:void(0)" data-filter=".recreio">Recreio</a></li>
                             <li><a href="javascript:void(0)" data-filter=".botafogo">Botafogo</a></li>
                             <li><a href="javascript:void(0)" data-filter=".flamengo">Flamengo</a></li>
@@ -42,7 +42,7 @@
                 <div class="card">
                     <a href="{{route('empreendimento.site.show', [$development->slug])}}">
                         <div class="card-header text-uppercase">{{$development->status}}</div>
-                        <div class="card-body"><img src="{{ url('storage/'.$development->img_featured)}}" alt="{{$development->name}} - Fachada" class="img-fluid"></div>
+                        <div class="card-body"><img src="{{ asset('images/features/'.$development->img_featured)}}" alt="{{$development->name}} - Fachada" class="img-fluid"></div>
                         <div class="card-footer"><strong class="text-uppercase">{{$development->name}}</strong><br>{{$development->street}} - {{$development->neighborhood}}</div>
                     </a>
                 </div>

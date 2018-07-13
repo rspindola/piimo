@@ -41,9 +41,13 @@ class ImageController extends Controller
     {
         $photo = $request->file('file');
         $filename = 'empreendimento-'.str_random(10).time().'.'.$photo->getClientOriginalExtension(); 
-        $destinationPath = public_path('images/empreendimentos');
+        $destinationPath = public_path('images/empreendimentos/thumb');
         $thumb_img = ImageI::make($photo->getRealPath())->resize(795, 550);
         $thumb_img->save($destinationPath.'/'.$filename,80);
+		
+		$destinationPath = public_path('images/empreendimentos');
+        $original = ImageI::make($photo->getRealPath());
+        $original->save($destinationPath.'/'.$filename,80);
         if ($request->date)
         {
             $date = $request->date.'-01';

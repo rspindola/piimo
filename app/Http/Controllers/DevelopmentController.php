@@ -44,15 +44,21 @@ class DevelopmentController extends Controller
         $dados = request()->except('_token');
         
         //pegando e manipulando os dados da logo
-        if ($request->hasFile('logo'))
-        {
-            $filename = $request->file('logo')->store('logos');
+        if ($request->logo) {
+            $logo = $request->logo;
+            $filename = 'planta-'.str_random(10).time().'.'.$logo->getClientOriginalExtension(); 
+			$destinationPath = public_path('images/logos');
+            $original = ImageI::make($logo->getRealPath())->resize(270, 176);
+            $original->save($destinationPath.'/'.$filename);
             $dados['logo'] = $filename;
         }
 
-        if ($request->hasFile('img_featured'))
-        {
-            $filename = $request->file('img_featured')->store('features');
+        if($request->img_featured) {
+            $img_featured = $request->img_featured;
+            $filename = 'planta-'.str_random(10).time().'.'.$img_featured->getClientOriginalExtension(); 
+			$destinationPath = public_path('images/features');
+            $original = ImageI::make($img_featured->getRealPath())->resize(460, 549);
+            $original->save($destinationPath.'/'.$filename);
             $dados['img_featured'] = $filename;
         }
 
@@ -75,9 +81,13 @@ class DevelopmentController extends Controller
         if ($dados['status']=='OBRAS') {
             foreach ($request->photos_obra as $photos_obra) {
                 $filename = 'obra-'.str_random(10).time().'.'.$photos_obra->getClientOriginalExtension(); 
-                $destinationPath = public_path('images/empreendimentos');
+                $destinationPath = public_path('images/empreendimentos/thumb');
                 $thumb_img = ImageI::make($photos_obra->getRealPath())->resize(795, 550);
                 $thumb_img->save($destinationPath.'/'.$filename,80);
+				
+				$destinationPath = public_path('images/empreendimentos');
+				$original = ImageI::make($photos_obra->getRealPath());
+				$original->save($destinationPath.'/'.$filename);
                 Image::create([
                     'development_id' => $empreendimento->id,
                     'nome' => $filename,
@@ -88,9 +98,14 @@ class DevelopmentController extends Controller
         //salvando imagens do empreendimento
         foreach ($request->photos as $photo) {
             $filename = 'empreendimento-'.str_random(10).time().'.'.$photo->getClientOriginalExtension(); 
-            $destinationPath = public_path('images/empreendimentos');
+            $destinationPath = public_path('images/empreendimentos/thumb');
             $thumb_img = ImageI::make($photo->getRealPath())->resize(795, 550);
             $thumb_img->save($destinationPath.'/'.$filename,80);
+			
+			$destinationPath = public_path('images/empreendimentos');
+            $original = ImageI::make($photo->getRealPath());
+            $original->save($destinationPath.'/'.$filename);
+			
             Image::create([
                 'development_id' => $empreendimento->id,
                 'nome' => $filename,
@@ -101,9 +116,12 @@ class DevelopmentController extends Controller
         //salvando as fotos da planta do empreendimento
         foreach ($request->photos_planta as $photo_planta) {
             $filename = 'planta-'.str_random(10).time().'.'.$photo_planta->getClientOriginalExtension(); 
-            $destinationPath = public_path('images/empreendimentos');
+            $destinationPath = public_path('images/empreendimentos/thumb');
             $thumb_img = ImageI::make($photo_planta->getRealPath())->resize(795, 550);
             $thumb_img->save($destinationPath.'/'.$filename,80);
+			$destinationPath = public_path('images/empreendimentos');
+            $original = ImageI::make($photo_planta->getRealPath());
+            $original->save($destinationPath.'/'.$filename);
             Image::create([
                 'development_id' => $empreendimento->id,
                 'nome' => $filename,
@@ -149,15 +167,21 @@ class DevelopmentController extends Controller
         $dados = request()->except('_token');
         
         //pegando e manipulando os dados da logo
-        if ($request->hasFile('logo'))
-        {
-            $filename = $request->file('logo')->store('logos');
+        if ($request->logo) {
+            $logo = $request->logo;
+            $filename = 'planta-'.str_random(10).time().'.'.$logo->getClientOriginalExtension(); 
+			$destinationPath = public_path('images/logos');
+            $original = ImageI::make($logo->getRealPath())->resize(270, 176);
+            $original->save($destinationPath.'/'.$filename);
             $dados['logo'] = $filename;
         }
 
-        if ($request->hasFile('img_featured'))
-        {
-            $filename = $request->file('img_featured')->store('features');
+        if($request->img_featured) {
+            $img_featured = $request->img_featured;
+            $filename = 'planta-'.str_random(10).time().'.'.$img_featured->getClientOriginalExtension(); 
+			$destinationPath = public_path('images/features');
+            $original = ImageI::make($img_featured->getRealPath())->resize(460, 549);
+            $original->save($destinationPath.'/'.$filename);
             $dados['img_featured'] = $filename;
         }
 

@@ -16,7 +16,7 @@
     <div class="container-fluid m-0 p-0">
         <div class="col-md-12 m-0 p-0">
             <div class="slider-home">
-                <img class="img-fluid" src="{{asset('vendor/piimo/site/img/home/slider/homer-slider-01.jpg') }}" alt="Residencial Payssandu" style="width:100%">
+                <!--<img class="img-fluid" src="{{asset('vendor/piimo/site/img/home/slider/homer-slider-01.jpg') }}" alt="Residencial Payssandu" style="width:100%">-->
                 <img class="img-fluid" src="{{asset('vendor/piimo/site/img/home/slider/homer-slider-02.jpg') }}" alt="Residencial Payssandu" style="width:100%">
                 <img class="img-fluid" src="{{asset('vendor/piimo/site/img/home/slider/homer-slider-03.jpg') }}" alt="Residencial Payssandu" style="width:100%">
             </div>
@@ -77,7 +77,7 @@
                 <p class="text-justify emp-home-descricao">A Piimo é uma empresa que nasceu com mais de 20 anos de experiência de seus executivos atuando no mercado imobiliário em projetos residenciais e comerciais em diversas cidades do estado do Rio de Janeiro.</p>
             </div>
             <div class="col-12 col-md-6">
-                <div class="img-wrapper mb-3"><a href="{{url('/obra')}}"><img class="img-fluid" src="{{asset('vendor/piimo/site/img/home/home-obras-por-administracao.jpg') }}" alt="Prontos"><div class="badge badge-secondary"><i class="icon-eye"></i> Veja Mais</div></a></div>
+                <div class="img-wrapper mb-3"><a href="{{url('/obra-por-administracao')}}"><img class="img-fluid" src="{{asset('vendor/piimo/site/img/home/home-obras-por-administracao.jpg') }}" alt="Prontos"><div class="badge badge-secondary"><i class="icon-eye"></i> Veja Mais</div></a></div>
                 <a href="obra.php">
                     <p class="h2 text-uppercase emp-home-title">Obras por Administração</p>
                 </a>

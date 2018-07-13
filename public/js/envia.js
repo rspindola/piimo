@@ -144,11 +144,7 @@ $(document).ready(function () {
                                     }, 500);
                                 } else {
                                     $(".form-venda")[0].reset();
-                                    swal({
-                                        type: 'success',
-                                        title: 'Obrigado',
-                                        text: 'Em breve entraremos em contato.',
-                                    })
+                                    location.href = "/obrigado";
                                     $('.btn-success').removeClass("hidden");
                                     $('.loader').addClass("hidden");
                                     if (data.response) {
@@ -230,11 +226,7 @@ $(document).ready(function () {
                                     }, 500);
                                 } else {
                                     $(".ligamos")[0].reset();
-                                    swal({
-                                        type: 'success',
-                                        title: 'Obrigado',
-                                        text: 'Em breve entraremos em contato.',
-                                    })
+                                    location.href = "/obrigado";
                                     $('.btn-success').removeClass("hidden");
                                     $('.loader').addClass("hidden");
                                     if (data.response) {
@@ -278,7 +270,6 @@ $(document).ready(function () {
             });
         },
         submitHandler: function (form) {
-            alert('foi')
             $('.btn-success').addClass("hidden");
             $('.loader').removeClass("hidden");
             // obter os dados do formulário
@@ -405,11 +396,7 @@ $(document).ready(function () {
                                     }, 500);
                                 } else {
                                     $(".email")[0].reset();
-                                    swal({
-                                        type: 'success',
-                                        title: 'Obrigado',
-                                        text: 'Em breve entraremos em contato.',
-                                    })
+                                    location.href = "/obrigado";
                                     $('.btn-success').removeClass("hidden");
                                     $('.loader').addClass("hidden");
                                     if (data.response) {
@@ -494,11 +481,7 @@ $(document).ready(function () {
                                 } else {
                                     $("#form-obra")[0].reset();
                                     $('#modalObra').modal('hide');
-                                    swal({
-                                        type: 'success',
-                                        title: 'Obrigado',
-                                        text: 'Em breve entraremos em contato.',
-                                    })
+                                    location.href = "/obrigado";
                                     $('.btn-success').removeClass("hidden");
                                     $('.loader').addClass("hidden");
                                     if (data.response) {
@@ -588,11 +571,7 @@ $(document).ready(function () {
                                     }, 500);
                                 } else {
                                     $("#contato")[0].reset();
-                                    swal({
-                                        type: 'success',
-                                        title: 'Obrigado',
-                                        text: 'Em breve entraremos em contato.',
-                                    })
+                                    location.href = "/obrigado";
                                     $('.btn-success').removeClass("hidden");
                                     $('.loader').addClass("hidden");
                                     if (data.response) {
@@ -672,11 +651,7 @@ $(document).ready(function () {
                                     }, 500);
                                 } else {
                                     $("#news-form")[0].reset();
-                                    swal({
-                                        type: 'success',
-                                        title: 'Obrigado',
-                                        text: 'Em breve entraremos em contato.',
-                                    })
+                                    location.href = "/obrigado";
                                     $('.btn-success').removeClass("hidden");
                                     $('.loader').addClass("hidden");
                                     if (data.response) {

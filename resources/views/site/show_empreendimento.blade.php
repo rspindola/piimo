@@ -81,7 +81,7 @@
                         <div class="col-md-7 pl-md-0">
                             <p class="emp-desc">{!! $empreendimento->description !!}</p>
                         </div>
-                        <div class="col-md-5 pr-0"><img src="{{ url('storage/'.$empreendimento->logo)}}" alt="{{$empreendimento->name}} - Logo" class="img-fluid">
+                        <div class="col-md-5 pr-0"><img src="{{ asset('images/logos/'.$empreendimento->logo)}}" alt="{{$empreendimento->name}} - Logo" class="img-fluid">
                             <div class="emp-share"><a href="" target="_blank"><img src="{{asset('vendor/piimo/site/img/empreendimentos/icon-share.svg') }}" alt=""> </a><a href="" target="_blank"><img src="{{asset('vendor/piimo/site/img/empreendimentos/icon-star.svg') }}" alt=""> </a><a href="" target="_blank"><img src="{{asset('vendor/piimo/site/img/empreendimentos/icon-print.svg') }}" alt=""></a></div>
                         </div>
                     </div>
@@ -98,7 +98,7 @@
                                         <li><strong>Bairro:</strong> {{$empreendimento->neighborhood}}</li>
                                         <li><strong>Endereço:</strong> {{$empreendimento->street}}, {{$empreendimento->number}}</li>
                                         <li><strong>Quartos:</strong> {{$empreendimento->rooms}}</li>
-                                        <li><strong>Metragem:</strong> {{$empreendimento->footage}}&sup2;</li>
+                                        <li><strong>Metragem:</strong> {{$empreendimento->footage}}</li>
                                         <li><strong>Status:</strong> {{$empreendimento->status}}</li>
                                     </ul>
                                 </div>
@@ -127,7 +127,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-5"><img src="{{ url('storage/'.$empreendimento->img_featured)}}" alt="{{$empreendimento->name}} - Fachada" class="img-fluid"></div>
+                <div class="col-md-5"><img src="{{ asset('images/features/'.$empreendimento->img_featured)}}" alt="{{$empreendimento->name}} - Fachada" class="img-fluid"></div>
             </div>
         </div>
     </section>
@@ -272,7 +272,7 @@
                         @foreach($imagens_obra as $img)
                         <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter {{Carbon\Carbon::parse($img->date)->format('Y-m') }}">
                             <a href="{{ url('images/empreendimentos/'.$img->nome)}}">
-                                <img src="{{ url('images/empreendimentos/'.$img->nome)}}" alt="">
+                                <img src="{{ url('images/empreendimentos/thumb/'.$img->nome)}}" alt="">
                             </a>
 </div>
                         @endforeach
@@ -296,7 +296,7 @@
                     <div class="glry-plantas d-flex flex-wrap justify-content-center">
                         @foreach($imagens_emprendimento as $img)
                             <a href="{{ url('images/empreendimentos/'.$img->nome)}}">
-                                <img src="{{ url('images/empreendimentos/'.$img->nome)}}" alt="">
+                                <img src="{{ url('images/empreendimentos/thumb/'.$img->nome)}}" alt="">
                             </a>
                         @endforeach
                     </div>

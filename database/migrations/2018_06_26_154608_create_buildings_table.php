@@ -15,6 +15,7 @@ class CreateBuildingsTable extends Migration
     {
         Schema::create('buildings', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('development_id')->unsigned();
             $table->integer('terreno')->default(0);
             $table->integer('fundacao')->default(0);
             $table->integer('estrutura')->default(0);
@@ -24,6 +25,10 @@ class CreateBuildingsTable extends Migration
             $table->integer('acabamento')->default(0);
             $table->integer('entrega')->default(0);
             $table->timestamps();
+            $table->foreign('development_id')
+                ->references('id')
+                ->on('developments')
+                ->onDelete('cascade');
         });
     }
 

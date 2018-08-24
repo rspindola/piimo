@@ -18,6 +18,7 @@ class CreateImagesTable extends Migration
             $table->integer('development_id')->unsigned();
             $table->string('nome');
             $table->enum('category', ['FOTO','PLANTA','OBRA']);
+            $table->date('date')->nullable();
             $table->timestamps();
 
             $table->foreign('development_id')

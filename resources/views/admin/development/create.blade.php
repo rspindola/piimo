@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Piimo Admin | Criar Empreendimento')
+@section('title', 'Admin | Criar Empreendimento')
 @section('css')
 <link href='https://fonts.googleapis.com/css?family=Quantico' rel='stylesheet' type='text/css'/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.2.0/css/ion.rangeSlider.min.css" />

@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return 'Acesse /login para acessar o painel administrativo do sistema';
 });
 Route::get('/home', function () {
     return route('home');
@@ -21,6 +21,7 @@ Route::post('/dropzone/{id}', 'ImageController@store');
 Auth::routes();
 Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
+    Route::post('/changePassword','HomeController@changePassword')->name('changePassword');
     Route::resource('/empreendimentos', 'DevelopmentController');
     Route::resource('/leads', 'LeadController');
     Route::get('/leads-obras', 'LeadController@leadobra');
@@ -33,9 +34,15 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::resource('/curriculos', 'EmploymentController'); 
     Route::resource('/newsletter', 'NewsletterController'); 
 });
+
+/*
 Route::get('/obrigado', function () {
     return view('site.obrigado');
-});Route::get('/empreendimento', 'PiimoController@empreendimentos')->name('empreendimento.site.index');
+})->name('obrigado');
+Route::get('/obrigado-2', function () {
+    return view('site.obrigado2');
+})->name('obrigado2');
+Route::get('/empreendimento', 'PiimoController@empreendimentos')->name('empreendimento.site.index');
 Route::get('/empreendimento/{slug}/show', 'PiimoController@empreendimentosShow')->name('empreendimento.site.show');
 Route::get('/obra-por-administracao', 'PiimoController@obra')->name('piimo.obra');
 Route::post('/obra/lead', 'LeadController@obra')->name('lead.obra');
@@ -51,3 +58,4 @@ Route::post('/email/lead', 'LeadController@email')->name('lead.email');
 Route::post('/whatsapp/lead', 'LeadController@whatsapp')->name('lead.whatsapp');
 Route::post('/ligamos/lead', 'LeadController@ligamos')->name('lead.ligamos');
 route::get('/testedatabase', 'ImageController@teste');
+*/

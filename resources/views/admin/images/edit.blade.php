@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Piimo - Editar imagens')
+@section('title', 'Admin - Editar imagens')
 
 @section('content_header')
 <h1>Imagens</h1>

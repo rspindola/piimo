@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Piimo Admin | Empreendimentos')
+@section('title', 'Admin | Empreendimentos')
 
 @section('content_header')
 <h1>Empreendimentos</h1>

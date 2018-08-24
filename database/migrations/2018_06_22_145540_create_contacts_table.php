@@ -21,7 +21,7 @@ class CreateContactsTable extends Migration
             $table->text('message');
             $table->string('development');
             $table->string('unity');
-            $table->enum('area', ['Adminstrativo','Financeiro']);
+            $table->string('area');
             $table->boolean('isClient');
             $table->timestamps();
         });

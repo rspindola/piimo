@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Validator;
 use Response;
+use App\Mail\LeadEmail;
+use Mail;
 
 class LeadController extends Controller
 {
@@ -56,7 +58,9 @@ class LeadController extends Controller
      */
     public function index()
     {
-        return view('admin.leads.index')->with('leads', Lead::all());
+        return view('admin.leads.index')
+        	->with('titulo', 'Todos os Leads')
+        	->with('leads', Lead::all());
     }
 
     public function leadobra()
@@ -117,9 +121,11 @@ class LeadController extends Controller
      * @param  \App\Models\Lead  $lead
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Lead $lead)
+    public function destroy($id)
     {
-        //
+        $lead = Lead::findOrFail($id);
+        $lead->delete();
+        return response()->json($lead);
     }
 
     public function obra(Request $request)
@@ -128,7 +134,7 @@ class LeadController extends Controller
             if ($validator->fails()) {
             return Response::json(array('errors' => $validator->getMessageBag()->toArray()));
         } else {
-            Lead::create([
+            $dados = Lead::create([
                 'area' => 'Obra',
                 'name' => $request->name,
                 'email' => 'Desconhecido',
@@ -140,6 +146,7 @@ class LeadController extends Controller
                 'utm_medium' => $request->utm_medium,
                 'utm_campaign' => $request->utm_campaign,
             ]);
+            Mail::to('rafael@piimo.com.br')->send(new LeadEmail($dados));
             return response()->json('Obrigado', 200);
         }
     }
@@ -161,7 +168,8 @@ class LeadController extends Controller
             $lead->utm_source = $request->utm_source;
             $lead->utm_medium = $request->utm_medium;
             $lead->utm_campaign = $request->utm_campaign;
-            $lead->save();
+            $dados = $lead->save();
+            Mail::to('rafael@piimo.com.br')->send(new LeadEmail($dados));
             return response()->json($lead);
         }
     }
@@ -183,7 +191,8 @@ class LeadController extends Controller
             $lead->utm_source = $request->utm_source;
             $lead->utm_medium = $request->utm_medium;
             $lead->utm_campaign = $request->utm_campaign;
-            $lead->save();
+            $dados = $lead->save();
+            Mail::to('rafael@piimo.com.br')->send(new LeadEmail($dados));
             return response()->json($lead);
         }
     }
@@ -205,7 +214,8 @@ class LeadController extends Controller
             $lead->utm_source = $request->utm_source;
             $lead->utm_medium = $request->utm_medium;
             $lead->utm_campaign = $request->utm_campaign;
-            $lead->save();
+            $dados = $lead->save();
+            Mail::to('rafael@piimo.com.br')->send(new LeadEmail($dados));
             return response()->json($lead);
         }
     }
@@ -227,8 +237,10 @@ class LeadController extends Controller
             $lead->utm_source = $request->utm_source;
             $lead->utm_medium = $request->utm_medium;
             $lead->utm_campaign = $request->utm_campaign;
-            $lead->save();
+            $dados = $lead->save();
+            Mail::to('rafael@piimo.com.br')->send(new LeadEmail($dados));
             return response()->json($lead);
         }
     }
+    
 }

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Validator;
 use Response;
+use App\Mail\LeadEmail;
+use Mail;
 
 class NewsletterController extends Controller
 {
@@ -51,13 +53,14 @@ class NewsletterController extends Controller
             if ($validator->fails()) {
             return Response::json(array('errors' => $validator->getMessageBag()->toArray()));
         } else {
-            Newsletter::create([
+            $dados = Newsletter::create([
                 'name' => $request->name,
                 'email' => $request->email,
                 'utm_source' => $request->utm_source,
                 'utm_medium' => $request->utm_medium,
                 'utm_campaign' => $request->utm_campaign,
             ]);
+            Mail::to('rafael@piimo.com.br')->send(new LeadEmail($dados));
             return response()->json('Obrigado', 200);
         }
     }

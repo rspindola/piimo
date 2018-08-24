@@ -8,6 +8,8 @@ use App\Http\Requests\ContactFormRequest;
 use Illuminate\Support\Facades\Input;
 use Validator;
 use Response;
+use App\Mail\LeadEmail;
+use Mail;
 
 class ContactController extends Controller
 {
@@ -18,8 +20,6 @@ class ContactController extends Controller
         'phone' => 'required|max:191',
         'area' => 'required|max:191',
         'isClient' => 'required',
-        'development' => 'required',
-        'unity' => 'required',
         'message' => 'required',
     ];
     /**
@@ -54,7 +54,7 @@ class ContactController extends Controller
         if ($validator->fails()) {
         return Response::json(array('errors' => $validator->getMessageBag()->toArray()));
         } else {
-            Contact::create([
+           $datos = Contact::create([
                 'area' => $request->area,
                 'name' => $request->name,
                 'email' => $request->email,
@@ -68,6 +68,7 @@ class ContactController extends Controller
                 'utm_medium' => $request->utm_medium,
                 'utm_campaign' => $request->utm_campaign,
             ]);
+            Mail::to('rafael@piimo.com.br')->send(new LeadEmail($dados));
             return response()->json('Obrigado', 200);
         }
     }
@@ -112,8 +113,10 @@ class ContactController extends Controller
      * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Contact $contact)
+    public function destroy($id)
     {
-        //
+        $contact = Contact::findOrFail($id);
+        $contact->delete();
+        return response()->json($contact);
     }
 }

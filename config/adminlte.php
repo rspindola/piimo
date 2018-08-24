@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'title' => 'Piimo',
+    'title' => 'Sensorial',
 
     'title_prefix' => '',
 
@@ -30,9 +30,9 @@ return [
     |
     */
 
-    'logo' => '<b>Piimo</b>',
+    'logo' => '<b>Sensorial</b>',
 
-    'logo_mini' => '<b>Piimo</b>',
+    'logo_mini' => '<b>SWH</b>',
 
     /*
     |--------------------------------------------------------------------------
@@ -58,7 +58,7 @@ return [
     |
     */
 
-    'layout' => null,
+    'layout' => 'fixed',
 
     /*
     |--------------------------------------------------------------------------
@@ -115,17 +115,14 @@ return [
             'icon' => 'home',
         ],
         [
+            'text' => 'Empreendimentos',
+            'url'  => 'admin/empreendimentos',
+            'icon' => 'building',
+        ],
+        [
             'text' => 'Leads',
             'icon' => 'file',
             'submenu' => [
-                [
-                    'text' => 'Obras',
-                    'url'  => 'admin/leads-obras',
-                ],
-                [
-                    'text' => 'Venda seu terreno',
-                    'url'  => 'admin/leads-vendas',
-                ],
                 [
                     'text' => 'Contato e-mail',
                     'url'  => 'admin/leads-email',
@@ -141,12 +138,7 @@ return [
             ],
         ],
         [
-            'text' => 'Empreendimentos',
-            'url'  => 'admin/empreendimentos',
-            'icon' => 'building',
-        ],
-        [
-            'text' => 'Contato',
+            'text' => 'Contato do site',
             'url'  => 'admin/contatos',
             'icon' => 'envelope-o',
         ],

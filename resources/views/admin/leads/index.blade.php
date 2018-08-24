@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Piimo Admin | Leads')
+@section('title', 'Admin | Leads')
 
 @section('content_header')
 <h1>Leads - {{$titulo}}</h1>

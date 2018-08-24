@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Piimo Admin | Editar Empreendimento')
+@section('title', 'Admin | Editar Empreendimento')
 @section('css')
 <link href='https://fonts.googleapis.com/css?family=Quantico' rel='stylesheet' type='text/css'/>
 

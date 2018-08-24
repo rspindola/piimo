@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Piimo Admin | Home')
+@section('title', 'Admin | Home')
 
 @section('content_header')
     <h1>Dashboard</h1>

@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Piimo Admin | Curriculos')
+@section('title', 'Admin | Curriculos')
 
 @section('content_header')
 <h1>Curriculos</h1>

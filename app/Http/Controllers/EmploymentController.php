@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Input;
 use Validator;
 use Response;
 use App\Http\Requests\EmploymentFormRequest;
+use App\Mail\LeadEmail;
+use Mail;
 
 class EmploymentController extends Controller
 {
@@ -43,8 +45,11 @@ class EmploymentController extends Controller
      */
     public function store(EmploymentFormRequest $request)
     {
-            $filename = $request->file('attachment')->store('anexos');
-            Employment::create([
+        $file=$request->file('attachment');
+        $filename = $file->getClientOriginalName();
+	    $file->move(public_path('/docs/cv'),$filename);
+
+            $dados = Employment::create([
                 'name' => $request->name,
                 'email' => $request->email,
                 'phone' => $request->phone,
@@ -52,8 +57,8 @@ class EmploymentController extends Controller
                 'linkedin' => $request->linkedin,
                 'attachment' => $filename,
             ]);
-            alert()->success('Em breve entraremos em contato.', 'Obrigado')->persistent('Ok');
-            return redirect()->route('piimo.trabalho');
+            Mail::to('rafael@piimo.com.br')->send(new LeadEmail($dados));
+            return redirect()->route('obrigado2');
     }
 
     /**
@@ -96,8 +101,10 @@ class EmploymentController extends Controller
      * @param  \App\Employment  $employment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Employment $employment)
+    public function destroy($id)
     {
-        //
+        $employment = Employment::findOrFail($id);
+        $employment->delete();
+        return response()->json($employment);
     }
 }

@@ -54,19 +54,5 @@ class DatabaseSeeder extends Seeder
                 'email' => $faker->email(),
             ]);
         }
-
-        foreach (range(1,100) as $index) {
-            DB::table('contacts')->insert([
-                'area' => 'Contato Ligação',
-                'name' => $faker->text(),
-                'email' => $faker->email(),
-                'phone' => $faker->e164PhoneNumber(),
-                'message' => $faker->text(),
-                'development' => $faker->city(),
-                'unity' => $faker->state(),
-                'area' => $faker->text(),
-                'isClient' => $faker->text(),
-            ]);
-        }
     }
 }
